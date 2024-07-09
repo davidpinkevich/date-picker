@@ -13,5 +13,11 @@
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "src/**/*.spec.tsx"]
+  "exclude": ["node_modules", "build", "src/**/*.spec.tsx"],
+  "types": ["jest", "@testing-library/jest-dom", "node"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
