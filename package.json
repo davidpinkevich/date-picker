@@ -12,7 +12,8 @@
     "test:watch": "jest --watch",
     "prepublishOnly": "npm run build",
     "build": "rollup -c",
-    "watch": "rollup -c -w"
+    "watch": "rollup -c -w",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
@@ -41,6 +42,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-testing-library": "^5.10.0",
+    "husky": "^8.0.0",
     "prettier": "^3.2.5",
     "node-sass": "^9.0.0",
     "postcss": "^8.4.39",
