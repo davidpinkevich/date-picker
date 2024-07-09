@@ -4,6 +4,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import url from "@rollup/plugin-url";
+import alias from "@rollup/plugin-alias";
+
+const path = ["components", "utils"];
 
 export default {
   input: "src/index.ts",
@@ -11,13 +14,13 @@ export default {
     {
       file: "build/index.js",
       format: "cjs",
-      sourcemap: true,
+      sourcemap: true
     },
     {
       file: "build/index.es.js",
       format: "esm",
-      sourcemap: true,
-    },
+      sourcemap: true
+    }
   ],
   plugins: [
     peerDepsExternal(),
@@ -27,8 +30,14 @@ export default {
     postcss({
       modules: true,
       use: ["sass"],
-      minimize: true,
+      minimize: true
     }),
     url(),
-  ],
+    alias({
+      entries: path.map((item) => ({
+        find: `@${item}`,
+        replacement: `./src/${item}`
+      }))
+    })
+  ]
 };
