@@ -2,13 +2,13 @@ import React from "react";
 
 import { SampleComponentProps } from "./SampleComponent.types";
 
-import styles from "./styles.module.scss";
+import { StyledCardInfo } from "./styled";
 
 const SampleComponent: React.FC<SampleComponentProps> = ({ text }) => (
-  <div className={styles.test}>
+  <StyledCardInfo>
     <h3>This is a Sample component</h3>
     <div data-testid="sample-text">{text}</div>
-  </div>
+  </StyledCardInfo>
 );
 
 export default SampleComponent;

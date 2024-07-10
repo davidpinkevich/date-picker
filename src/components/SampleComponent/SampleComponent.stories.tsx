@@ -6,7 +6,7 @@ export default {
   component: SampleComponent
 };
 
-const Template = (args) => <SampleComponent {...args} />;
+const Template = (args: { text: string }) => <SampleComponent {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
