@@ -56,13 +56,13 @@
         "groups": [
           ["^react", "^@testing-library", "^styled-components"],
           [
-            "^@constants(/.*|$)",
-            "^@utils(/.*|$)",
-            "^@hooks(/.*|$)",
-            "^@assets(/.*|$)",
-            "^@styles(/.*|$)"
+            "^constants(/.*|$)",
+            "^utils(/.*|$)",
+            "^hooks(/.*|$)",
+            "^assets(/.*|$)",
+            "^styles(/.*|$)"
           ],
-          ["^@components(/.*|$)"],
+          ["^components(/.*|$)"],
           ["^\\u0000"],
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           ["^\\./(?=.)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
