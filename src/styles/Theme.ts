@@ -2,9 +2,12 @@ import { type DefaultTheme } from "styled-components";
 
 const Theme: DefaultTheme = {
   fontSizes: {
-    mainSize: "16px"
+    inputSize: "15px",
+    dateBlockItemSize: "13px"
   },
-  colors: {}
+  colors: {
+    mainDark: "#333333"
+  }
 };
 
 export { Theme };
