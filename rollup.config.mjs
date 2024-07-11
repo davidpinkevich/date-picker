@@ -1,29 +1,50 @@
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import typescript from "rollup-plugin-typescript2";
-import url from "@rollup/plugin-url";
+import typescript from "@rollup/plugin-typescript";
+import terser from "@rollup/plugin-terser";
+import svg from "rollup-plugin-svg";
+import dts from "rollup-plugin-dts";
 
-export default {
-  input: "src/index.ts",
-  output: [
-    {
-      file: "build/index.js",
-      format: "cjs",
-      sourcemap: true
-    },
-    {
-      file: "build/index.es.js",
-      format: "esm",
-      sourcemap: true
-    }
-  ],
-  plugins: [
-    peerDepsExternal(),
-    resolve(),
-    commonjs(),
-    typescript({ useTsconfigDeclarationDir: true }),
-    url()
-  ],
-  external: ["react", "react-dom", "styled-components"]
-};
+const packageJson = require("./package.json");
+
+module.exports = [
+  {
+    input: "src/index.ts",
+    output: [
+      {
+        file: packageJson.module,
+        format: "cjs"
+      },
+      {
+        file: packageJson.main,
+        format: "esm"
+      }
+    ],
+    external: ["react"],
+    plugins: [
+      typescript({
+        tsconfig: "./tsconfig.json",
+        exclude: ["**/*.stories.tsx"]
+      }),
+      resolve({
+        extensions: [
+          ".mjs",
+          ".js",
+          ".json",
+          ".node",
+          ".jsx",
+          ".tsx",
+          ".ts",
+          ".svg"
+        ]
+      }),
+      svg(),
+      terser()
+    ],
+    external: ["react", "react-dom", "styled-components"]
+  },
+  {
+    input: "src/index.ts",
+    output: [{ file: packageJson.types, format: "esm" }],
+    plugins: [dts.default()]
+  }
+];
