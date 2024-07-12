@@ -15,10 +15,9 @@ export interface TargetDate {
 
 export interface PropsDateBlock {
   data: PropsDateBlockItem[];
-  // month: number;
-  // year: number;
   typeSwitch: string;
   typeStart: string;
   targetDate: TargetDate;
   setTargetDate: (newDate: TargetDate) => void;
+  setTypeSwitch: (value: string) => void;
 }
