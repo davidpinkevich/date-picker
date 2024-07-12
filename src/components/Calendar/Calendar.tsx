@@ -15,6 +15,7 @@ const Calendar: React.FC<{ typeStart: "Mo" | "Su" }> = ({ typeStart }) => {
     dateContainer,
     typeSwitch,
     targetDate,
+    setTypeSwitch,
     setTargetDate
   } = useCalendar({ typeStart });
 
@@ -29,6 +30,7 @@ const Calendar: React.FC<{ typeStart: "Mo" | "Su" }> = ({ typeStart }) => {
           typeStart={typeStart}
           targetDate={targetDate}
           setTargetDate={setTargetDate}
+          setTypeSwitch={setTypeSwitch}
         />
       </StyledCalendar>
     </ThemeContainer>
