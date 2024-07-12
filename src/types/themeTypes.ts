@@ -6,5 +6,7 @@ export interface TypesTheme {
 
   colors: {
     mainDark: string;
+    mainGray: string;
+    lightGray: string;
   };
 }

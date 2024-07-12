@@ -6,7 +6,9 @@ const Theme: DefaultTheme = {
     dateBlockItemSize: "13px"
   },
   colors: {
-    mainDark: "#333333"
+    mainDark: "#333333",
+    mainGray: "#AAAAAA",
+    lightGray: "#F1F1F1"
   }
 };
 
