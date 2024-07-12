@@ -4,6 +4,7 @@ const StyledDateBlockItem = styled.div<{
   currentMonth: boolean;
   today: boolean;
 }>`
+  cursor: pointer;
   width: 32px;
   height: 32px;
   transition: all 0.2s;
@@ -12,15 +13,18 @@ const StyledDateBlockItem = styled.div<{
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  background-color: ${(props) => (props.today ? "blue" : "inherit")};
+  background-color: ${(props) =>
+    props.today ? props.theme.colors.targetBlue : "inherit"};
   color: ${(props) =>
-    props.currentMonth
-      ? props.theme.colors.mainDark
-      : props.theme.colors.mainGray};
+    props.today
+      ? props.theme.colors.white
+      : props.currentMonth
+        ? props.theme.colors.mainDark
+        : props.theme.colors.mainGray};
   font-size: ${(props) => props.theme.fontSizes.dateBlockItemSize};
 
   &:hover {
-    background-color: #eaf2fd;
+    background-color: ${(props) => (!props.today ? "#eaf2fd" : "#070fe3")};
   }
 `;
 
