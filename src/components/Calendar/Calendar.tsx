@@ -6,7 +6,7 @@ import { DateBlock } from "components/DateBlock/DateBlock";
 import { Input } from "components/Input/Input";
 import { ThemeContainer } from "components/ThemeContainer/ThemeContainer";
 
-import { StyledCalendar } from "./styled";
+import { StyledCalendar } from "./Calendar.styled";
 
 const Calendar: React.FC<{ typeStart: "Mo" | "Su" }> = ({ typeStart }) => {
   const {
