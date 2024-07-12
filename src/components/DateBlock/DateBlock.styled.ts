@@ -8,10 +8,12 @@ const opacityChange = keyframes`
 const StyledDateBlock = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   border: #bbbbbb 1px solid;
   border-radius: 8px;
+  padding: 10px;
+  min-height: 275px;
 `;
 
 const StyledDateBlockString = styled.div`
@@ -22,11 +24,9 @@ const StyledMainBlock = styled.div<{ move: boolean }>`
   animation: ${(props) =>
     props.move
       ? css`
-          ${opacityChange} 0.5s linear
+          ${opacityChange} 1s linear
         `
       : "none"};
-
-  /* display: flex; */
 `;
 
 const StyledDateBlockStringDays = styled.div`
