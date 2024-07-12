@@ -8,7 +8,10 @@ const Theme: DefaultTheme = {
   colors: {
     mainDark: "#333333",
     mainGray: "#AAAAAA",
-    lightGray: "#F1F1F1"
+    lightGray: "#F1F1F1",
+    targetBlue: "#2F80ED",
+    black: "#000000",
+    white: "#FFFFFF"
   }
 };
 

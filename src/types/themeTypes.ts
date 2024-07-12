@@ -8,5 +8,8 @@ export interface TypesTheme {
     mainDark: string;
     mainGray: string;
     lightGray: string;
+    targetBlue: string;
+    black: string;
+    white: string;
   };
 }
