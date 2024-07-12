@@ -2,7 +2,6 @@ import React from "react";
 import type { Preview } from "@storybook/react";
 
 import { ThemeContainer } from "../src/components/ThemeContainer/ThemeContainer";
-import { ContextContainer } from "../src/components/ContextContainer/ContextContainer";
 
 const preview: Preview = {
   parameters: {
@@ -15,11 +14,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ContextContainer>
-        <ThemeContainer>
-          <Story />
-        </ThemeContainer>
-      </ContextContainer>
+      <ThemeContainer>
+        <Story />
+      </ThemeContainer>
     )
   ]
 };
