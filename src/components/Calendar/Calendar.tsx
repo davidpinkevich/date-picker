@@ -1,37 +1,25 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
-import { useCalendar } from "hooks/useCalendar";
+import { Context } from "constants/context";
 
 import { DateBlock } from "components/DateBlock/DateBlock";
-import { Input } from "components/Input/Input";
 import { ThemeContainer } from "components/ThemeContainer/ThemeContainer";
 
 import { StyledCalendar } from "./Calendar.styled";
+import { type PropsCalendar } from "./Calendar.types";
 
-const Calendar: React.FC<{ typeStart: "Mo" | "Su" }> = ({ typeStart }) => {
-  const {
-    value,
-    setValue,
-    dateContainer,
-    typeSwitch,
-    targetDate,
-    setTypeSwitch,
-    setTargetDate
-  } = useCalendar({ typeStart });
+const Calendar: React.FC<PropsCalendar> = ({ typeStart }) => {
+  const { setTypeStart } = useContext(Context);
+
+  useEffect(() => {
+    setTypeStart(typeStart);
+  }, [typeStart]);
 
   return (
     <ThemeContainer>
       <StyledCalendar>
         <h2>Calendar</h2>
-        <Input value={value} setValue={setValue} />
-        <DateBlock
-          data={dateContainer}
-          typeSwitch={typeSwitch}
-          typeStart={typeStart}
-          targetDate={targetDate}
-          setTargetDate={setTargetDate}
-          setTypeSwitch={setTypeSwitch}
-        />
+        <DateBlock />
       </StyledCalendar>
     </ThemeContainer>
   );

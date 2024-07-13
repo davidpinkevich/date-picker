@@ -1,4 +1,3 @@
-export interface CalendarProps {
-  text: "one" | "two";
-  type: string;
+export interface PropsCalendar {
+  typeStart: "Mo" | "Su";
 }
