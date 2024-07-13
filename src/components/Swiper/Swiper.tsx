@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 
+import { Context } from "constants/context";
 import { MONTHS } from "constants/data";
 import { ArrowImg } from "assets/icons/arrow";
 
@@ -10,13 +11,10 @@ import {
 } from "./Swiper.styled";
 import { type PropsSwiper } from "./Swiper.types";
 
-const Swiper: React.FC<PropsSwiper> = ({
-  typeSwitch,
-  targetDate,
-  setTargetDate,
-  handleSwiperClick,
-  setTypeSwitch
-}) => {
+const Swiper: React.FC<PropsSwiper> = ({ handleSwiperClick }) => {
+  const { targetDate, setTargetDate, typeSwitch, setTypeSwitch } =
+    useContext(Context);
+
   const handleDateChangeDec = () => {
     handleSwiperClick();
     if (typeSwitch === "weeks") {
