@@ -43,7 +43,7 @@ module.exports = [
     external: ["react", "react-dom", "styled-components"]
   },
   {
-    input: "src/index.ts",
+    input: "dist/esm/types/index.d.ts",
     output: [{ file: packageJson.types, format: "esm" }],
     plugins: [dts.default()]
   }

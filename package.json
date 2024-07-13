@@ -1,9 +1,13 @@
 {
   "name": "date-picker",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "davidpinkevich",
-  "license": "MIT",
+  "main": "dist/esm/index.js",
+  "module": "dist/cjs/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "lint": "eslint ./src",
