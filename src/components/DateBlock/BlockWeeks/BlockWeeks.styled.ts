@@ -1,32 +1,40 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
-const StyledBlockWeeks = styled.div`
-  display: grid;
-  margin-top: 10px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  justify-content: space-between;
-  gap: 10px;
+const opacityChange = keyframes`
+  0% { opacity: 0.2; } 
+  100% { opacity: 1; }  
 `;
 
-const StyledBlockWeeksItem = styled.p<{ target: boolean }>`
+const StyledDateBlockString = styled.div`
+  display: flex;
+`;
+
+const StyledDateBlockItem = styled.div<{
+  currentMonth: boolean;
+  today: boolean;
+}>`
   cursor: pointer;
-  border-radius: 8px;
-  padding: 15px 20px;
+  width: 32px;
+  height: 32px;
   transition: all 0.2s;
-  text-align: center;
-
-  color: ${(props) =>
-    props.target ? props.theme.colors.white : props.theme.colors.mainDark};
-
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
   background-color: ${(props) =>
-    props.target ? props.theme.colors.targetBlue : "inherit"};
+    props.today ? props.theme.colors.targetBlue : "inherit"};
+  color: ${(props) =>
+    props.today
+      ? props.theme.colors.white
+      : props.currentMonth
+        ? props.theme.colors.mainDark
+        : props.theme.colors.mainGray};
+  font-size: ${(props) => props.theme.fontSizes.dateBlockItemSize};
 
   &:hover {
-    transform: scale(1.1);
-    background-color: ${(props) =>
-      !props.target && props.theme.colors.lightGray};
+    background-color: ${(props) => (!props.today ? "#eaf2fd" : "#070fe3")};
   }
 `;
 
-export { StyledBlockWeeks, StyledBlockWeeksItem };
+export { StyledDateBlockItem, StyledDateBlockString };

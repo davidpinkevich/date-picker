@@ -1,35 +1,43 @@
-import React from "react";
+import React, { memo, useContext } from "react";
 
-import { MONTHS } from "constants/data";
+import { Context } from "constants/context";
+import { splitArrayIntoChunks } from "utils/splitArrayIntoChunks";
 
-import { StyledBlockWeeks, StyledBlockWeeksItem } from "./BlockWeeks.styled";
+import {
+  StyledDateBlockItem,
+  StyledDateBlockString
+} from "./BlockWeeks.styled";
 
-import { type PropsBlockWeeks } from "./BlockWeeks.types";
+const BlockWeeks: React.FC = memo(() => {
+  const { dateContainer, setTargetDay } = useContext(Context);
 
-const BlockWeeks: React.FC<PropsBlockWeeks> = ({
-  targetDate,
-  setTargetDate,
-  setTypeSwitch
-}) => {
-  const handleSwitch = (month: number) => {
-    setTargetDate({ ...targetDate, month });
-    setTypeSwitch("weeks");
+  const handleClick = (year: number, month: number, day: number) => {
+    setTargetDay({ year, month, day });
   };
 
   return (
-    <StyledBlockWeeks>
-      {MONTHS.map((item) => {
+    <>
+      {splitArrayIntoChunks(dateContainer, 7).map((str, index) => {
         return (
-          <StyledBlockWeeksItem
-            onClick={() => handleSwitch(item.id)}
-            target={targetDate.month === item.id}
-            key={item.id}>
-            {item.name}
-          </StyledBlockWeeksItem>
+          <StyledDateBlockString key={index}>
+            {str.map((item, index) => {
+              return (
+                <StyledDateBlockItem
+                  key={index}
+                  onClick={() =>
+                    handleClick(item.year, item.month, item.dayNumber)
+                  }
+                  currentMonth={item.currentMonth}
+                  today={item.today}>
+                  {item.dayNumber}
+                </StyledDateBlockItem>
+              );
+            })}
+          </StyledDateBlockString>
         );
       })}
-    </StyledBlockWeeks>
+    </>
   );
-};
+});
 
 export { BlockWeeks };

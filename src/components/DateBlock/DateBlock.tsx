@@ -1,28 +1,21 @@
-import React, { useState } from "react";
+import React, { memo, useContext, useState } from "react";
 
+import { Context } from "constants/context";
 import { DAYS_OF_WEEK } from "constants/data";
-import { splitArrayIntoChunks } from "utils/splitArrayIntoChunks";
 
 import { Swiper } from "components/Swiper/Swiper";
-import { BlockWeeks } from "./BlockWeeks/BlockWeeks";
 
+import { BlockMonths } from "./BlockMonths/BlockMonths";
+import { BlockWeeks } from "./BlockWeeks/BlockWeeks";
+import { type PropsBlockWeeks } from "./BlockWeeks/BlockWeeks.types";
 import {
   StyledDateBlock,
-  StyledDateBlockString,
   StyledDateBlockStringDays,
   StyledMainBlock
 } from "./DateBlock.styled";
-import { type PropsDateBlock } from "./DateBlock.types";
-import { DateBlockItem } from "./DateBlockItem/DateBlockItem";
 
-const DateBlock: React.FC<PropsDateBlock> = ({
-  data,
-  typeSwitch,
-  typeStart,
-  targetDate,
-  setTargetDate,
-  setTypeSwitch
-}) => {
+const DateBlock: React.FC = memo(() => {
+  const { typeSwitch, typeStart } = useContext(Context);
   const days =
     typeStart === "Mo" ? DAYS_OF_WEEK.fromMonady : DAYS_OF_WEEK.fromSunday;
 
@@ -37,13 +30,7 @@ const DateBlock: React.FC<PropsDateBlock> = ({
 
   return (
     <StyledDateBlock>
-      <Swiper
-        targetDate={targetDate}
-        setTargetDate={setTargetDate}
-        typeSwitch={typeSwitch}
-        handleSwiperClick={handleSwiperClick}
-        setTypeSwitch={setTypeSwitch}
-      />
+      <Swiper handleSwiperClick={handleSwiperClick} />
       {typeSwitch === "weeks" && (
         <StyledDateBlockStringDays>
           {days.map((item, index) => {
@@ -52,26 +39,11 @@ const DateBlock: React.FC<PropsDateBlock> = ({
         </StyledDateBlockStringDays>
       )}
       <StyledMainBlock move={move}>
-        {typeSwitch === "weeks" &&
-          splitArrayIntoChunks(data, 7).map((str, index) => {
-            return (
-              <StyledDateBlockString key={index}>
-                {str.map((item, index) => {
-                  return <DateBlockItem key={index} {...item} />;
-                })}
-              </StyledDateBlockString>
-            );
-          })}
+        {typeSwitch === "weeks" && <BlockWeeks />}
       </StyledMainBlock>
-      {typeSwitch === "months" && (
-        <BlockWeeks
-          targetDate={targetDate}
-          setTargetDate={setTargetDate}
-          setTypeSwitch={setTypeSwitch}
-        />
-      )}
+      {typeSwitch === "months" && <BlockMonths />}
     </StyledDateBlock>
   );
-};
+});
 
 export { DateBlock };
