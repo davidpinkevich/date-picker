@@ -1,15 +1,9 @@
-import { DAYS_OF_WEEK } from "constants/data";
+import { DAYS_OF_WEEK, StartDays } from "constants/data";
 
+import { daysInMonth } from "./daysInMonth";
 import { getToday } from "./getToday";
 
-const isLeapYear = (year: number) => {
-  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-};
-
-const daysInMonth = (year: number, month: number) => {
-  const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  return month === 1 && isLeapYear(year) ? 29 : days[month];
-};
+import { type TargetDay } from "types/contextTypes";
 
 const getDateArray = (year: number, month: number) => {
   const daysArray: Array<{
@@ -36,11 +30,17 @@ const getDateArray = (year: number, month: number) => {
   return daysArray;
 };
 
-const createDateArray = (year: number, month: number, type: string) => {
+const createDateArray = (
+  year: number,
+  month: number,
+  type: string,
+  mainPeriod: { min: number; max: number },
+  targetDay?: TargetDay | null
+) => {
   const daysArray = getDateArray(year, month);
   const today = getToday();
   const currentTypeDays =
-    type === "Mo" ? DAYS_OF_WEEK.fromMonady : DAYS_OF_WEEK.fromSunday;
+    type === StartDays.Mo ? DAYS_OF_WEEK.fromMonady : DAYS_OF_WEEK.fromSunday;
   if (daysArray[0].dayName !== currentTypeDays[0]) {
     const needFillDays = currentTypeDays.findIndex(
       (item) => item === daysArray[0].dayName
