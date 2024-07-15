@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 import { Context } from "constants/context";
-import { MONTHS } from "constants/data";
+import { MONTHS, TypesSwitch } from "constants/data";
 
 import { StyledBlockWeeks, StyledBlockWeeksItem } from "./BlockMonths.styled";
 
@@ -10,7 +10,7 @@ const BlockMonths: React.FC = ({}) => {
 
   const handleSwitch = (month: number) => {
     setTargetDate({ ...targetDate, month });
-    setTypeSwitch("weeks");
+    setTypeSwitch(TypesSwitch.weeks);
   };
 
   return (
