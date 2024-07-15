@@ -1,4 +1,5 @@
 interface TargetDate {
+  years?: number;
   year: number;
   month: number;
 }
