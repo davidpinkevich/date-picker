@@ -19,12 +19,13 @@ const BlockYears: React.FC = () => {
   return (
     <StyledBlockYears>
       {getYearsPeriods(mainPeriod.min, years, mainPeriod.max).map(
-        ({ value, availability }) => {
+        ({ value, availability }, index) => {
           return (
             <StyledBlockYearsItem
               onClick={() => handleSwitch(value)}
-              target={year === value}
-              availability={availability}>
+              $target={year === value}
+              $availability={availability}
+              key={index}>
               {value}
             </StyledBlockYearsItem>
           );

@@ -29,7 +29,7 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(({ move }) => {
   };
 
   return (
-    <StyledMainBlock move={move}>
+    <StyledMainBlock $move={move}>
       {splitArrayIntoChunks(dateContainer, 7).map((str, index) => {
         return (
           <StyledDateBlockString key={index}>
@@ -41,13 +41,13 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(({ move }) => {
                 return (
                   <React.Fragment key={index}>
                     <StyledDateBlockItem
-                      isHoliday={holiday?.isHoliday}
+                      $isHoliday={holiday?.isHoliday}
                       key={index}
                       onClick={() => handleClick(year, month, dayNumber)}
                       onMouseOver={() => handleMouseOver(holiday?.title)}
                       onMouseOut={handleMouseOut}
-                      currentMonth={currentMonth}
-                      today={today}>
+                      $currentMonth={currentMonth}
+                      $today={today}>
                       {dayNumber}
                     </StyledDateBlockItem>
                     {viewHoliday && holiday?.isHoliday && (

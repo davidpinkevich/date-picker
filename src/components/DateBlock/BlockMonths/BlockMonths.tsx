@@ -19,7 +19,7 @@ const BlockMonths: React.FC = ({}) => {
         return (
           <StyledBlockWeeksItem
             onClick={() => handleSwitch(item.id)}
-            target={targetDate.month === item.id}
+            $target={targetDate.month === item.id}
             key={item.id}>
             {item.name}
           </StyledBlockWeeksItem>

@@ -5,9 +5,9 @@ const opacityChange = keyframes`
   100% { opacity: 1; }  
 `;
 
-const StyledMainBlock = styled.div<{ move: boolean }>`
+const StyledMainBlock = styled.div<{ $move: boolean }>`
   animation: ${(props) =>
-    props.move
+    props.$move
       ? css`
           ${opacityChange} 1s linear
         `
@@ -19,9 +19,9 @@ const StyledDateBlockString = styled.div`
 `;
 
 const StyledDateBlockItem = styled.div<{
-  currentMonth: boolean;
-  today: boolean;
-  isHoliday: boolean;
+  $currentMonth: boolean;
+  $today: boolean;
+  $isHoliday: boolean;
 }>`
   cursor: pointer;
   width: 32px;
@@ -33,19 +33,19 @@ const StyledDateBlockItem = styled.div<{
   align-items: center;
   font-weight: 600;
   background-color: ${(props) =>
-    props.today ? props.theme.colors.targetBlue : "inherit"};
+    props.$today ? props.theme.colors.targetBlue : "inherit"};
   color: ${(props) =>
-    props.today
+    props.$today
       ? props.theme.colors.white
-      : props.isHoliday
+      : props.$isHoliday
         ? props.theme.colors.mainRed
-        : props.currentMonth
+        : props.$currentMonth
           ? props.theme.colors.mainDark
           : props.theme.colors.mainGray};
   font-size: ${(props) => props.theme.fontSizes.dateBlockItemSize};
 
   &:hover {
-    background-color: ${(props) => (!props.today ? "#eaf2fd" : "#070fe3")};
+    background-color: ${(props) => (!props.$today ? "#eaf2fd" : "#070fe3")};
   }
 `;
 

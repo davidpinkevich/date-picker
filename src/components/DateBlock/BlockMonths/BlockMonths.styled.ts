@@ -9,7 +9,7 @@ const StyledBlockWeeks = styled.div`
   gap: 10px;
 `;
 
-const StyledBlockWeeksItem = styled.p<{ target: boolean }>`
+const StyledBlockWeeksItem = styled.p<{ $target: boolean }>`
   cursor: pointer;
   border-radius: 8px;
   padding: 15px 20px;
@@ -17,15 +17,15 @@ const StyledBlockWeeksItem = styled.p<{ target: boolean }>`
   text-align: center;
 
   color: ${(props) =>
-    props.target ? props.theme.colors.white : props.theme.colors.mainDark};
+    props.$target ? props.theme.colors.white : props.theme.colors.mainDark};
 
   background-color: ${(props) =>
-    props.target ? props.theme.colors.targetBlue : "inherit"};
+    props.$target ? props.theme.colors.targetBlue : "inherit"};
 
   &:hover {
     transform: scale(1.1);
     background-color: ${(props) =>
-      !props.target && props.theme.colors.lightGray};
+      !props.$target && props.theme.colors.lightGray};
   }
 `;
 
