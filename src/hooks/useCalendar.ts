@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 
+import { addHolidays } from "utils/addHolidays";
 import { createDateArray } from "utils/getDate";
 
 const useCalendar = () => {
   const [value, setValue] = useState("");
   const [typeStart, setTypeStart] = useState<"Mo" | "Su">("Mo");
+  const [withHolidays, setWithHolidays] = useState(false);
   const [mainPeriod, setMainPeriod] = useState({ min: 2020, max: 2026 });
 
   const [targetDay, setTargetDay] = useState<{
+    years: number;
     year: number;
     month: number;
     day: number;
@@ -22,13 +25,19 @@ const useCalendar = () => {
   const [dateContainer, setDateContainer] = useState(
     createDateArray(targetDate.year, targetDate.month, typeStart, mainPeriod)
   );
+
   const [typeSwitch, setTypeSwitch] = useState("weeks");
 
   useEffect(() => {
-    setDateContainer(
-      createDateArray(targetDate.year, targetDate.month, typeStart, mainPeriod)
+    const base = createDateArray(
+      targetDate.year,
+      targetDate.month,
+      typeStart,
+      mainPeriod
     );
-  }, [targetDate, typeStart]);
+    const updateBase = withHolidays ? addHolidays(base) : base;
+    setDateContainer(updateBase);
+  }, [targetDate, typeStart, withHolidays]);
 
   return {
     typeStart,
@@ -38,12 +47,15 @@ const useCalendar = () => {
     value,
     setValue,
     dateContainer,
+    setDateContainer,
     typeSwitch,
     setTypeSwitch,
     targetDate,
     setTargetDate,
     targetDay,
-    setTargetDay
+    setTargetDay,
+    withHolidays,
+    setWithHolidays
   };
 };
 

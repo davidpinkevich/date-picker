@@ -1,10 +1,12 @@
 interface TargetDate {
-  years?: number;
+  years: number;
   year: number;
   month: number;
 }
 
-export interface TargetDay extends TargetDate {
+export interface TargetDay {
+  year: number;
+  month: number;
   day: number;
 }
 
@@ -15,15 +17,19 @@ interface TypesDateBlockItem {
   dayName: string;
   currentMonth: boolean;
   today: boolean;
+  holiday?: { isHoliday: boolean; title: string };
 }
 
 export interface TypeContext {
   typeStart: "Mo" | "Su";
   mainPeriod: { min: number; max: number };
+  withHolidays: boolean;
+  setWithHolidays: (value: boolean) => void;
   dateContainer: TypesDateBlockItem[];
   typeSwitch: string;
   targetDate: TargetDate;
   targetDay: TargetDay | null;
+  setDateContainer: (value: TypesDateBlockItem[]) => void;
   setMainPeriod: (value: { min: number; max: number }) => void;
   setTargetDay: (value: TargetDay | null) => void;
   setTargetDate: (newDate: TargetDate) => void;

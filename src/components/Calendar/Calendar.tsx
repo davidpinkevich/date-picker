@@ -11,20 +11,20 @@ import { type PropsCalendar } from "./Calendar.types";
 
 const Calendar: React.FC<PropsCalendar> = ({
   typeStart,
+  withHolidays = true,
   min = BASE_PERIOD.MIN,
   max = BASE_PERIOD.MAX
 }) => {
-  const { setTypeStart, setMainPeriod } = useContext(Context);
-
+  const { setTypeStart, setMainPeriod, setWithHolidays } = useContext(Context);
   useEffect(() => {
     setTypeStart(typeStart);
     setMainPeriod({ min, max });
+    setWithHolidays(withHolidays);
   }, [typeStart, setMainPeriod]);
 
   return (
     <ThemeContainer>
       <StyledCalendar>
-        <h2>Calendar</h2>
         <DateBlock />
       </StyledCalendar>
     </ThemeContainer>

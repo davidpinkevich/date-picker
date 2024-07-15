@@ -6,6 +6,7 @@ function splitArrayIntoChunks(
     dayName: string;
     currentMonth: boolean;
     today: boolean;
+    holiday?: { isHoliday: boolean; title: string };
   }>,
   chunkSize: number
 ) {
