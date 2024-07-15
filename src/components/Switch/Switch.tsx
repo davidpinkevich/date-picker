@@ -1,11 +1,8 @@
 import React, { useContext } from "react";
 
-import { TypesSwitch } from "constants/data";
-
-import { viewYearsPeriod } from "utils/getYearsPeriods";
-
 import { Context } from "constants/context";
-import { MONTHS } from "constants/data";
+import { MONTHS, TypesSwitch } from "constants/data";
+import { viewYearsPeriod } from "utils/getYearsPeriods";
 import { ArrowImg } from "assets/icons/arrow";
 
 import {

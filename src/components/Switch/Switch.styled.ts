@@ -56,9 +56,9 @@ const StyledArrowRight = styled.button`
 `;
 
 export {
+  StyledArrowLeft,
+  StyledArrowRight,
   StyledSwitch,
   StyledSwitchBlock,
-  StyledSwitchTitle,
-  StyledArrowLeft,
-  StyledArrowRight
+  StyledSwitchTitle
 };
