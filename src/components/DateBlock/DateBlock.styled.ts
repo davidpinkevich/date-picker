@@ -1,11 +1,7 @@
-import styled, { css, keyframes } from "styled-components";
-
-const opacityChange = keyframes`
-  0% { opacity: 0.2; } 
-  100% { opacity: 1; }  
-`;
+import styled from "styled-components";
 
 const StyledDateBlock = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -18,15 +14,6 @@ const StyledDateBlock = styled.div`
 
 const StyledDateBlockString = styled.div`
   display: flex;
-`;
-
-const StyledMainBlock = styled.div<{ move: boolean }>`
-  animation: ${(props) =>
-    props.move
-      ? css`
-          ${opacityChange} 1s linear
-        `
-      : "none"};
 `;
 
 const StyledDateBlockStringDays = styled.div`
@@ -47,6 +34,5 @@ export {
   StyledDateBlock,
   StyledDateBlockString,
   StyledDateBlockStringDays,
-  StyledDateBlockStringDaysItem,
-  StyledMainBlock
+  StyledDateBlockStringDaysItem
 };

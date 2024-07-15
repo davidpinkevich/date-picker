@@ -11,8 +11,7 @@ import { BlockYears } from "./BlockYears/BlockYears";
 import {
   StyledDateBlock,
   StyledDateBlockStringDays,
-  StyledDateBlockStringDaysItem,
-  StyledMainBlock
+  StyledDateBlockStringDaysItem
 } from "./DateBlock.styled";
 
 const DateBlock: React.FC = memo(() => {
@@ -45,9 +44,7 @@ const DateBlock: React.FC = memo(() => {
           })}
         </StyledDateBlockStringDays>
       )}
-      <StyledMainBlock move={move}>
-        {typeSwitch === TypesSwitch.weeks && <BlockWeeks />}
-      </StyledMainBlock>
+      {typeSwitch === TypesSwitch.weeks && <BlockWeeks move={move} />}
       {typeSwitch === TypesSwitch.months && <BlockMonths />}
       {typeSwitch === TypesSwitch.years && <BlockYears />}
     </StyledDateBlock>
