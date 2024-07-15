@@ -31,20 +31,22 @@ const StyledMainBlock = styled.div<{ move: boolean }>`
 
 const StyledDateBlockStringDays = styled.div`
   display: flex;
-  & p {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    color: ${(props) => props.theme.colors.mainDark};
-  }
+`;
+
+const StyledDateBlockStringDaysItem = styled.p`
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.mainDark};
 `;
 
 export {
   StyledDateBlock,
   StyledDateBlockString,
   StyledDateBlockStringDays,
+  StyledDateBlockStringDaysItem,
   StyledMainBlock
 };
