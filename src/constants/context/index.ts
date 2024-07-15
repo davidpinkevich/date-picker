@@ -12,6 +12,7 @@ const Context = createContext<TypeContext>({
   typeSwitch: "weeks",
   setTypeSwitch: () => {},
   targetDate: {
+    years: 2020,
     year: 2024,
     month: 6
   },
