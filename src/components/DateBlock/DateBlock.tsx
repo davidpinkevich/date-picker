@@ -1,25 +1,28 @@
 import React, { memo, useContext, useState } from "react";
 
 import { Context } from "constants/context";
-import { DAYS_OF_WEEK } from "constants/data";
+import { DAYS_OF_WEEK, StartDays, TypesSwitch } from "constants/data";
 
-import { Swiper } from "components/Swiper/Swiper";
+import { Switch } from "components/Switch/Switch";
 
 import { BlockMonths } from "./BlockMonths/BlockMonths";
 import { BlockWeeks } from "./BlockWeeks/BlockWeeks";
-import { type PropsBlockWeeks } from "./BlockWeeks/BlockWeeks.types";
+import { BlockYears } from "./BlockYears/BlockYears";
 import {
   StyledDateBlock,
   StyledDateBlockStringDays,
+  StyledDateBlockStringDaysItem,
   StyledMainBlock
 } from "./DateBlock.styled";
 
 const DateBlock: React.FC = memo(() => {
   const { typeSwitch, typeStart } = useContext(Context);
-  const days =
-    typeStart === "Mo" ? DAYS_OF_WEEK.fromMonady : DAYS_OF_WEEK.fromSunday;
-
   const [move, setMove] = useState(false);
+
+  const days =
+    typeStart === StartDays.Mo
+      ? DAYS_OF_WEEK.fromMonady
+      : DAYS_OF_WEEK.fromSunday;
 
   const handleSwiperClick = () => {
     setMove(true);
@@ -30,18 +33,23 @@ const DateBlock: React.FC = memo(() => {
 
   return (
     <StyledDateBlock>
-      <Swiper handleSwiperClick={handleSwiperClick} />
-      {typeSwitch === "weeks" && (
+      <Switch handleSwiperClick={handleSwiperClick} />
+      {typeSwitch === TypesSwitch.weeks && (
         <StyledDateBlockStringDays>
           {days.map((item, index) => {
-            return <p key={index}>{item}</p>;
+            return (
+              <StyledDateBlockStringDaysItem key={index}>
+                {item}
+              </StyledDateBlockStringDaysItem>
+            );
           })}
         </StyledDateBlockStringDays>
       )}
       <StyledMainBlock move={move}>
-        {typeSwitch === "weeks" && <BlockWeeks />}
+        {typeSwitch === TypesSwitch.weeks && <BlockWeeks />}
       </StyledMainBlock>
-      {typeSwitch === "months" && <BlockMonths />}
+      {typeSwitch === TypesSwitch.months && <BlockMonths />}
+      {typeSwitch === TypesSwitch.years && <BlockYears />}
     </StyledDateBlock>
   );
 });
