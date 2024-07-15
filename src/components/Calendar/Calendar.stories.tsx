@@ -12,12 +12,16 @@ type Story = StoryObj<typeof Calendar>;
 
 export const FromMonday: Story = {
   args: {
-    typeStart: "Mo"
+    typeStart: "Mo",
+    min: 2015,
+    max: 2041
   }
 };
 
 export const FromSunday: Story = {
   args: {
-    typeStart: "Su"
+    typeStart: "Su",
+    min: 2010,
+    max: 2030
   }
 };
