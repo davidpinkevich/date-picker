@@ -11,7 +11,9 @@ const Theme: DefaultTheme = {
     lightGray: "#F1F1F1",
     targetBlue: "#2F80ED",
     black: "#000000",
-    white: "#FFFFFF"
+    white: "#FFFFFF",
+    mainRed: "#cf0404",
+    lightRed: "#f51111"
   }
 };
 

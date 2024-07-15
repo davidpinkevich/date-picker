@@ -7,6 +7,8 @@ export interface TypesTheme {
   colors: {
     mainDark: string;
     mainGray: string;
+    mainRed: string;
+    lightRed: string;
     lightGray: string;
     targetBlue: string;
     black: string;
