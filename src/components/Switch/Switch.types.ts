@@ -1,3 +1,3 @@
-export interface PropsSwiper {
+export interface PropsSwitch {
   handleSwiperClick: () => void;
 }
