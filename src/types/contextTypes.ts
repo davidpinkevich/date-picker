@@ -5,6 +5,7 @@ interface TargetDate {
 }
 
 export interface TargetDay {
+  years: number;
   year: number;
   month: number;
   day: number;
