@@ -14,41 +14,52 @@ import {
   StyledDateBlockStringDaysItem
 } from "./DateBlock.styled";
 
-const DateBlock: React.FC = memo(() => {
-  const { typeSwitch, typeStart } = useContext(Context);
-  const [move, setMove] = useState(false);
+import { type PropsDateBlock } from "./DateBlock.types";
 
-  const days =
-    typeStart === StartDays.Mo
-      ? DAYS_OF_WEEK.fromMonady
-      : DAYS_OF_WEEK.fromSunday;
+const DateBlock: React.FC<PropsDateBlock> = memo(
+  ({ range, handleClickRange, handleMouseRange }) => {
+    const { typeSwitch, typeStart } = useContext(Context);
+    const [move, setMove] = useState(false);
 
-  const handleSwiperClick = () => {
-    setMove(true);
-    setTimeout(() => {
-      setMove(false);
-    }, 1000);
-  };
+    const days =
+      typeStart === StartDays.Mo
+        ? DAYS_OF_WEEK.fromMonady
+        : DAYS_OF_WEEK.fromSunday;
 
-  return (
-    <StyledDateBlock>
-      <Switch handleSwiperClick={handleSwiperClick} />
-      {typeSwitch === TypesSwitch.weeks && (
-        <StyledDateBlockStringDays>
-          {days.map((item, index) => {
-            return (
-              <StyledDateBlockStringDaysItem key={index}>
-                {item}
-              </StyledDateBlockStringDaysItem>
-            );
-          })}
-        </StyledDateBlockStringDays>
-      )}
-      {typeSwitch === TypesSwitch.weeks && <BlockWeeks move={move} />}
-      {typeSwitch === TypesSwitch.months && <BlockMonths />}
-      {typeSwitch === TypesSwitch.years && <BlockYears />}
-    </StyledDateBlock>
-  );
-});
+    const handleSwiperClick = () => {
+      setMove(true);
+      setTimeout(() => {
+        setMove(false);
+      }, 1000);
+    };
+
+    return (
+      <StyledDateBlock $range={!!range}>
+        <Switch handleSwiperClick={handleSwiperClick} />
+        {typeSwitch === TypesSwitch.weeks && (
+          <StyledDateBlockStringDays>
+            {days.map((item, index) => {
+              return (
+                <StyledDateBlockStringDaysItem key={index}>
+                  {item}
+                </StyledDateBlockStringDaysItem>
+              );
+            })}
+          </StyledDateBlockStringDays>
+        )}
+        {typeSwitch === TypesSwitch.weeks && (
+          <BlockWeeks
+            move={move}
+            range={range}
+            handleClickRange={handleClickRange}
+            handleMouseRange={handleMouseRange}
+          />
+        )}
+        {typeSwitch === TypesSwitch.months && <BlockMonths />}
+        {typeSwitch === TypesSwitch.years && <BlockYears />}
+      </StyledDateBlock>
+    );
+  }
+);
 
 export { DateBlock };

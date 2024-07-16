@@ -1,5 +1,4 @@
-export interface PropsBlockWeeks {
-  move: boolean;
+export interface PropsDateBlock {
   range?: Array<{ year: number; month: number; day: number }> | null;
   handleClickRange?: (year: number, month: number, day: number) => void;
   handleMouseRange?: (

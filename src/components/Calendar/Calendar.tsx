@@ -12,6 +12,10 @@ import { type PropsCalendar } from "./Calendar.types";
 const Calendar: React.FC<PropsCalendar> = ({
   typeStart,
   withHolidays = true,
+  range,
+  ButtonClear,
+  handleClickRange,
+  handleMouseRange,
   min = BASE_PERIOD.MIN,
   max = BASE_PERIOD.MAX
 }) => {
@@ -25,7 +29,12 @@ const Calendar: React.FC<PropsCalendar> = ({
   return (
     <ThemeContainer>
       <StyledCalendar>
-        <DateBlock />
+        <DateBlock
+          range={range}
+          handleClickRange={handleClickRange}
+          handleMouseRange={handleMouseRange}
+        />
+        {ButtonClear}
       </StyledCalendar>
     </ThemeContainer>
   );
