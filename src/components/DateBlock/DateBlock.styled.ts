@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-const StyledDateBlock = styled.div`
+const StyledDateBlock = styled.div<{ $range: boolean }>`
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   border: #bbbbbb 1px solid;
-  border-radius: 8px;
   padding: 10px;
   min-height: 275px;
+  border-radius: ${(props) => (props.$range ? "8px 8px 0px 0px" : "8px")};
 `;
 
 const StyledDateBlockString = styled.div`
