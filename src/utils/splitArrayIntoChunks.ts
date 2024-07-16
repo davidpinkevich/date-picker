@@ -7,6 +7,11 @@ function splitArrayIntoChunks(
     currentMonth: boolean;
     today: boolean;
     holiday?: { isHoliday: boolean; title: string };
+    targetRange?: {
+      start: boolean;
+      end?: boolean;
+      middle?: boolean;
+    };
   }>,
   chunkSize: number
 ) {
