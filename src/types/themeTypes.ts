@@ -2,6 +2,7 @@ export interface TypesTheme {
   fontSizes: {
     inputSize: string;
     dateBlockItemSize: string;
+    buttonSize: string;
   };
 
   colors: {

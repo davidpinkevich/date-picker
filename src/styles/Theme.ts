@@ -3,7 +3,8 @@ import { type DefaultTheme } from "styled-components";
 const Theme: DefaultTheme = {
   fontSizes: {
     inputSize: "15px",
-    dateBlockItemSize: "13px"
+    dateBlockItemSize: "13px",
+    buttonSize: "12px"
   },
   colors: {
     mainDark: "#333333",
