@@ -1,12 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { Context } from "constants/context";
 import { MONTHS, TypesSwitch } from "constants/data";
+import { useBlockMonths } from "hooks/useBlockMonths";
 
 import { StyledBlockWeeks, StyledBlockWeeksItem } from "./BlockMonths.styled";
+import { type PropsBlockMonths } from "./BlockMonths.types";
 
-const BlockMonths: React.FC = ({}) => {
-  const { targetDate, setTargetDate, setTypeSwitch } = useContext(Context);
+const BlockMonths: React.FC<PropsBlockMonths> = ({
+  targetDay,
+  setTargetDay
+}) => {
+  const { targetDate, setTargetDate, setTypeSwitch } = useBlockMonths(
+    targetDay,
+    setTargetDay
+  );
 
   const handleSwitch = (month: number) => {
     setTargetDate({ ...targetDate, month });

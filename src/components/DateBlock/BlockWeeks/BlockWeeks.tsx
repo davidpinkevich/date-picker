@@ -1,7 +1,6 @@
-import React, { memo, useContext, useState } from "react";
+import React, { memo } from "react";
 
-import { Context } from "constants/context";
-import { splitArrayIntoChunks } from "utils/splitArrayIntoChunks";
+import { useBlockWeeks } from "hooks/useBlockWeeks";
 
 import {
   StyledDateBlockItem,
@@ -11,12 +10,20 @@ import {
 } from "./BlockWeeks.styled";
 import { type PropsBlockWeeks } from "./BlockWeeks.types";
 
-import { addTargetRange } from "utils/viewRangePicker";
-
 const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
-  ({ move, range, handleClickRange, handleMouseRange }) => {
-    const { dateContainer, setTargetDay } = useContext(Context);
-    const [viewHoliday, setViewHoliday] = useState("");
+  ({
+    move,
+    range,
+    handleClickRange,
+    handleMouseRange,
+    targetDay,
+    setTargetDay
+  }) => {
+    const { viewHoliday, setViewHoliday, data } = useBlockWeeks(
+      range,
+      targetDay,
+      setTargetDay
+    );
 
     const handleMouseOver = (
       value: string,
@@ -44,10 +51,6 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
         // setTargetDay({ year, month, day });
       }
     };
-
-    const data = range
-      ? splitArrayIntoChunks(addTargetRange(range, dateContainer), 7)
-      : splitArrayIntoChunks(dateContainer, 7);
 
     return (
       <StyledMainBlock $move={move}>
@@ -86,7 +89,8 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                         }
                         $currentMonth={currentMonth}
                         $today={today}
-                        $targetRange={targetRange}>
+                        $targetRange={targetRange}
+                        $targetDay={targetDay?.day === dayNumber}>
                         {dayNumber}
                       </StyledDateBlockItem>
                       {viewHoliday && holiday?.isHoliday && (

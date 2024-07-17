@@ -1,7 +1,6 @@
 import React from "react";
 
 import { StyledButtonClear } from "./ButtonClear.styled";
-
 import { type PropsButtonClear } from "./ButtonClear.types";
 
 const ButtonClear: React.FC<PropsButtonClear> = ({ onClick, label }) => {

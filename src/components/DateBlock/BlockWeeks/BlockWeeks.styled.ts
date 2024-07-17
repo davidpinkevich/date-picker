@@ -22,30 +22,64 @@ const StyledDateBlockItem = styled.div<{
   $currentMonth: boolean;
   $today: boolean;
   $isHoliday: boolean;
+  $targetRange: { start: boolean; end?: boolean; middle?: boolean } | undefined;
+  $targetDay: boolean;
 }>`
   cursor: pointer;
   width: 32px;
   height: 32px;
   transition: all 0.2s;
-  border-radius: 8px;
+  border-radius: ${(props) =>
+    props.$targetRange?.start
+      ? "8px 0px 0px 8px"
+      : props.$targetRange?.end
+        ? "0px 8px 8px 0px"
+        : props.$targetRange?.middle
+          ? "0px"
+          : "8px"};
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  background-color: ${(props) =>
-    props.$today ? props.theme.colors.targetBlue : "inherit"};
-  color: ${(props) =>
-    props.$today
-      ? props.theme.colors.white
-      : props.$isHoliday
-        ? props.theme.colors.mainRed
-        : props.$currentMonth
-          ? props.theme.colors.mainDark
-          : props.theme.colors.mainGray};
+  background-color: ${(props) => {
+    if (props.$today) {
+      return props.theme.colors.targetBlue;
+    } else if (props.$targetRange?.middle) {
+      return "#EAF2FD";
+    } else if (props.$targetRange?.start) {
+      return "#82B3F4";
+    } else if (props.$targetRange?.end) {
+      return "#2F80ED";
+    } else if (props.$targetDay) {
+      return "#EAF2FD";
+    } else {
+      return "inherit";
+    }
+  }};
+  color: ${(props) => {
+    if (props.$today) {
+      return props.theme.colors.white;
+    } else if (props.$targetRange?.start || props.$targetRange?.end) {
+      return props.theme.colors.white;
+    } else if (props.$isHoliday) {
+      return props.theme.colors.mainRed;
+    } else if (props.$targetRange?.middle) {
+      return "#2F80ED";
+    } else if (props.$currentMonth) {
+      return props.theme.colors.mainDark;
+    } else {
+      return props.theme.colors.mainGray;
+    }
+  }};
+
   font-size: ${(props) => props.theme.fontSizes.dateBlockItemSize};
 
   &:hover {
-    background-color: ${(props) => (!props.$today ? "#eaf2fd" : "#070fe3")};
+    background-color: ${(props) =>
+      !props.$today && !props.$targetRange?.start && !props.$targetRange?.end
+        ? "#eaf2fd"
+        : "#070fe3"};
+    font-size: 16px;
   }
 `;
 

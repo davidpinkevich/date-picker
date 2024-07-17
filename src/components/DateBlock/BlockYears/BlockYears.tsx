@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 
-import { Context } from "constants/context";
 import { TypesSwitch } from "constants/data";
 import { getYearsPeriods } from "utils/getYearsPeriods";
+import { useBlockYears } from "hooks/useBlockYears";
 
 import { StyledBlockYears, StyledBlockYearsItem } from "./BlockYears.styled";
+import { type PropsBlockYears } from "./BlockYears.types";
 
-const BlockYears: React.FC = () => {
-  const { targetDate, setTargetDate, setTypeSwitch, mainPeriod } =
-    useContext(Context);
-  const { year, years } = targetDate;
+const BlockYears: React.FC<PropsBlockYears> = ({ targetDay, setTargetDay }) => {
+  const { targetDate, mainPeriod, year, years, setTargetDate, setTypeSwitch } =
+    useBlockYears(targetDay, setTargetDay);
 
   const handleSwitch = (year: number) => {
     setTargetDate({ ...targetDate, year });

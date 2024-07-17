@@ -13,11 +13,10 @@ import {
   StyledDateBlockStringDays,
   StyledDateBlockStringDaysItem
 } from "./DateBlock.styled";
-
 import { type PropsDateBlock } from "./DateBlock.types";
 
 const DateBlock: React.FC<PropsDateBlock> = memo(
-  ({ range, handleClickRange, handleMouseRange }) => {
+  ({ range, handleClickRange, handleMouseRange, targetDay, setTargetDay }) => {
     const { typeSwitch, typeStart } = useContext(Context);
     const [move, setMove] = useState(false);
 
@@ -51,12 +50,18 @@ const DateBlock: React.FC<PropsDateBlock> = memo(
           <BlockWeeks
             move={move}
             range={range}
+            targetDay={targetDay}
             handleClickRange={handleClickRange}
             handleMouseRange={handleMouseRange}
+            setTargetDay={setTargetDay}
           />
         )}
-        {typeSwitch === TypesSwitch.months && <BlockMonths />}
-        {typeSwitch === TypesSwitch.years && <BlockYears />}
+        {typeSwitch === TypesSwitch.months && (
+          <BlockMonths targetDay={targetDay} setTargetDay={setTargetDay} />
+        )}
+        {typeSwitch === TypesSwitch.years && (
+          <BlockYears targetDay={targetDay} setTargetDay={setTargetDay} />
+        )}
       </StyledDateBlock>
     );
   }

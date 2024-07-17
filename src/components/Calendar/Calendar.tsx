@@ -14,6 +14,8 @@ const Calendar: React.FC<PropsCalendar> = ({
   withHolidays = true,
   range,
   ButtonClear,
+  targetDay,
+  setTargetDay,
   handleClickRange,
   handleMouseRange,
   min = BASE_PERIOD.MIN,
@@ -31,8 +33,10 @@ const Calendar: React.FC<PropsCalendar> = ({
       <StyledCalendar>
         <DateBlock
           range={range}
+          targetDay={targetDay}
           handleClickRange={handleClickRange}
           handleMouseRange={handleMouseRange}
+          setTargetDay={setTargetDay}
         />
         {ButtonClear}
       </StyledCalendar>

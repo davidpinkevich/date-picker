@@ -1,3 +1,3 @@
-import SampleComponent from "components/SampleComponent/SampleComponent";
+import * as Calendar from "components/Calendar/Calendar";
 
-export { SampleComponent };
+export default Calendar;
