@@ -9,21 +9,20 @@ const useCalendar = () => {
   const [withHolidays, setWithHolidays] = useState(false);
   const [mainPeriod, setMainPeriod] = useState({ min: 2020, max: 2026 });
 
-  const [targetDay, setTargetDay] = useState<{
-    years: number;
-    year: number;
-    month: number;
-    day: number;
-  } | null>(null);
-
   const [targetDate, setTargetDate] = useState({
     years: Math.floor(new Date().getFullYear() / 12) * 12,
     year: new Date().getFullYear(),
-    month: new Date().getMonth()
+    month: new Date().getMonth(),
+    day: null
   });
 
   const [dateContainer, setDateContainer] = useState(
-    createDateArray(targetDate.year, targetDate.month, typeStart, mainPeriod)
+    createDateArray(
+      targetDate.year,
+      targetDate.month,
+      typeStart,
+      targetDate.day
+    )
   );
 
   const [typeSwitch, setTypeSwitch] = useState("weeks");
@@ -33,7 +32,7 @@ const useCalendar = () => {
       targetDate.year,
       targetDate.month,
       typeStart,
-      mainPeriod
+      targetDate.day
     );
     const updateBase = withHolidays ? addHolidays(base) : base;
     setDateContainer(updateBase);
@@ -52,8 +51,6 @@ const useCalendar = () => {
     setTypeSwitch,
     targetDate,
     setTargetDate,
-    targetDay,
-    setTargetDay,
     withHolidays,
     setWithHolidays
   };
