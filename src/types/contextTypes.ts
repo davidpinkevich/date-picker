@@ -1,14 +1,14 @@
-interface TargetDate {
-  years: number;
-  year: number;
-  month: number;
-}
-
-export interface TargetDay {
-  years: number;
+export interface TypeYear {
   year: number;
   month: number;
   day: number;
+}
+
+export interface TargetDate {
+  years: number;
+  year: number;
+  month: number;
+  day: number | null;
 }
 
 interface TypesDateBlockItem {
@@ -29,10 +29,8 @@ export interface TypeContext {
   dateContainer: TypesDateBlockItem[];
   typeSwitch: string;
   targetDate: TargetDate;
-  targetDay: TargetDay | null;
   setDateContainer: (value: TypesDateBlockItem[]) => void;
   setMainPeriod: (value: { min: number; max: number }) => void;
-  setTargetDay: (value: TargetDay | null) => void;
   setTargetDate: (newDate: TargetDate) => void;
   setTypeSwitch: (value: string) => void;
   setTypeStart: (value: "Mo" | "Su") => void;

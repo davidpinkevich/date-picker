@@ -1,7 +1,6 @@
-function checkDateRange(
-  sort: Array<{ year: number; month: number; day: number }>,
-  value: { year: number; month: number; day: number }
-) {
+import { type TypeYear } from "types/contextTypes";
+
+function checkDateRange(sort: TypeYear[], value: TypeYear) {
   if (sort.length === 2) {
     const startDate = new Date(
       sort[0].year,

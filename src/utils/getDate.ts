@@ -3,8 +3,6 @@ import { DAYS_OF_WEEK, StartDays } from "constants/data";
 import { daysInMonth } from "./daysInMonth";
 import { getToday } from "./getToday";
 
-import { type TargetDay } from "types/contextTypes";
-
 const getDateArray = (year: number, month: number) => {
   const daysArray: Array<{
     year: number;
@@ -34,8 +32,7 @@ const createDateArray = (
   year: number,
   month: number,
   type: string,
-  mainPeriod: { min: number; max: number },
-  targetDay?: TargetDay | null
+  day: number | null
 ) => {
   const daysArray = getDateArray(year, month);
   const today = getToday();
