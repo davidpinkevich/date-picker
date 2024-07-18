@@ -1,19 +1,12 @@
+import { type TypeTargetDay } from "types/datePickerTypes";
+import { type TypeYear } from "types/contextTypes";
+
 export interface PropsBlockWeeks {
   move: boolean;
-  targetDay?: {
-    year: number;
-    month: number;
-    day: number;
-    valid: boolean;
-  } | null;
-  range?: Array<{ year: number; month: number; day: number }> | null;
+  targetDay?: TypeTargetDay | null;
+  range?: Array<TypeYear> | null;
   handleClickRange?: (year: number, month: number, day: number) => void;
-  setTargetDay?: (value: {
-    year: number;
-    month: number;
-    day: number;
-    valid: boolean;
-  }) => void;
+  setTargetDay?: (value: TypeTargetDay) => void;
   handleMouseRange?: (
     year: number,
     month: number,

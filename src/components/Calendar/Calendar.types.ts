@@ -1,21 +1,14 @@
+import { type TypeTargetDay } from "types/datePickerTypes";
+import { type TypeYear } from "types/contextTypes";
+
 export interface PropsCalendar {
   typeStart: "Mo" | "Su";
   withHolidays: boolean;
-  targetDay?: {
-    year: number;
-    month: number;
-    day: number;
-    valid: boolean;
-  } | null;
+  targetDay?: TypeTargetDay | null;
   withRangePicker?: boolean;
-  range?: Array<{ year: number; month: number; day: number }> | null;
+  range?: Array<TypeYear> | null;
   handleClickRange?: (year: number, month: number, day: number) => void;
-  setTargetDay?: (
-    year: number,
-    month: number,
-    day: number,
-    valid: boolean
-  ) => void;
+  setTargetDay?: (value: TypeTargetDay) => void;
   handleMouseRange?: (
     year: number,
     month: number,
