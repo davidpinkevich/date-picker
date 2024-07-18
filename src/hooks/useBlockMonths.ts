@@ -1,20 +1,12 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import { Context } from "constants/context";
 
+import { type TypeTargetDay } from "types/datePickerTypes";
+
 const useBlockMonths = (
-  targetDay: {
-    year: number;
-    month: number;
-    day: number;
-    valid: boolean;
-  },
-  setTargetDay?: (value: {
-    year: number;
-    month: number;
-    day: number;
-    valid: boolean;
-  }) => void
+  targetDay: TypeTargetDay,
+  setTargetDay?: (value: TypeTargetDay) => void
 ) => {
   const { targetDate, setTargetDate, setTypeSwitch, mainPeriod } =
     useContext(Context);
@@ -36,7 +28,7 @@ const useBlockMonths = (
     }
   }, [targetDay?.month, targetDay?.year]);
 
-  return { targetDate, mainPeriod, setTargetDate, setTypeSwitch };
+  return { targetDate, setTargetDate, setTypeSwitch };
 };
 
 export { useBlockMonths };
