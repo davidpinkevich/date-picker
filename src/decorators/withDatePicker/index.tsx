@@ -33,7 +33,7 @@ const withDatePicker =
         setTargetDay({ ...parserStrToDate(value), valid: isValidDate(value) });
 
         if (isValidDate(value)) {
-          setTargetDay({ ...parserStrToDate(value), valid: true });
+          setTargetDay({ ...targetDay, ...parserStrToDate(value) });
         }
       }
     }, [value]);

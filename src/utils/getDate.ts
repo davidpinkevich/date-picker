@@ -33,9 +33,9 @@ const createDateArray = (year: number, month: number, type: string) => {
   const today = getToday();
   const currentTypeDays =
     type === StartDays.Mo ? DAYS_OF_WEEK.fromMonady : DAYS_OF_WEEK.fromSunday;
-  if (daysArray[0].dayName !== currentTypeDays[0]) {
+  if (daysArray[0]?.dayName !== currentTypeDays[0]) {
     const needFillDays = currentTypeDays.findIndex(
-      (item) => item === daysArray[0].dayName
+      (item) => item === daysArray[0]?.dayName
     );
     const oldMonth = month - 1 === -1 ? 11 : month - 1;
     const oldYear = month - 1 === -1 ? year - 1 : year;
@@ -65,7 +65,6 @@ const createDateArray = (year: number, month: number, type: string) => {
       return { ...item, today: false };
     }
   });
-
   return updateDaysArray;
 };
 

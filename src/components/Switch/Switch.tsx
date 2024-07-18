@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 
 import { Context } from "constants/context";
-import { MONTHS, TypesSwitch } from "constants/data";
+import { MONTHS, TypesSwitch, YEAR_VALUES } from "constants/data";
 import { viewYearsPeriod } from "utils/getYearsPeriods";
 import { ArrowImg } from "assets/icons/arrow";
+
+import { isValidSwitch } from "utils/isValidDate";
 
 import {
   StyledArrowLeft,
@@ -30,13 +32,42 @@ const Switch: React.FC<PropsSwitch> = ({
     ) {
       handleSwiperClick();
       if (targetDate.month === 0 && mainPeriod.min !== targetDate.year) {
-        setTargetDate({ ...targetDate, month: 11, year: targetDate.year - 1 });
+        setTargetDate({
+          ...targetDate,
+          month: YEAR_VALUES.MONTHS - 1,
+          year: targetDate.year - 1
+        });
         if (targetDay?.year && targetDay?.month && targetDay?.day)
-          setTargetDay({ ...targetDay, month: 12, year: targetDate.year - 1 });
+          setTargetDay({
+            ...targetDay,
+            month: 12,
+            year: targetDate.year - 1,
+            valid: isValidSwitch(
+              targetDay.day,
+              targetDate.month,
+              targetDate.year
+            )
+          });
       } else {
-        setTargetDate({ ...targetDate, month: targetDate.month - 1 });
-        if (targetDay?.year && targetDay?.month && targetDay?.day)
-          setTargetDay({ ...targetDay, month: targetDay.month - 1 });
+        setTargetDate({
+          ...targetDate,
+          month: targetDate.month - 1
+        });
+        if (
+          targetDay?.year &&
+          targetDay?.month <= YEAR_VALUES.MONTHS &&
+          targetDay?.day
+        )
+          setTargetDay({
+            ...targetDay,
+            year: targetDate.year,
+            month: targetDay.month - 1,
+            valid: isValidSwitch(
+              targetDay.day,
+              targetDate.month,
+              targetDate.year
+            )
+          });
       }
     } else if (
       typeSwitch === TypesSwitch.months &&
@@ -44,7 +75,11 @@ const Switch: React.FC<PropsSwitch> = ({
     ) {
       setTargetDate({ ...targetDate, year: targetDate.year - 1 });
       if (targetDay?.year && targetDay?.month && targetDay?.day)
-        setTargetDay({ ...targetDay, year: targetDay.year - 1 });
+        setTargetDay({
+          ...targetDay,
+          year: targetDate.year - 1,
+          valid: isValidSwitch(targetDay.day, targetDate.month, targetDate.year)
+        });
     } else if (
       typeSwitch === TypesSwitch.years &&
       targetDate.years > mainPeriod.min
@@ -63,11 +98,36 @@ const Switch: React.FC<PropsSwitch> = ({
       if (targetDate.month === 11) {
         setTargetDate({ ...targetDate, month: 0, year: targetDate.year + 1 });
         if (targetDay?.year && targetDay?.month && targetDay?.day)
-          setTargetDay({ ...targetDay, month: 1, year: targetDay.year + 1 });
+          setTargetDay({
+            ...targetDay,
+            month: 1,
+            year: targetDate.year + 1,
+            valid: isValidSwitch(
+              targetDay.day,
+              targetDate.month,
+              targetDate.year
+            )
+          }); //
       } else {
-        setTargetDate({ ...targetDate, month: targetDate.month + 1 });
-        if (targetDay?.year && targetDay?.month && targetDay?.day)
-          setTargetDay({ ...targetDay, month: targetDay.month + 1 });
+        setTargetDate({
+          ...targetDate,
+          month: targetDate.month + 1
+        });
+        if (
+          targetDay?.year &&
+          targetDay?.month <= YEAR_VALUES.MONTHS &&
+          targetDay?.day
+        )
+          setTargetDay({
+            ...targetDay,
+            year: targetDate.year,
+            month: targetDay.month + 1,
+            valid: isValidSwitch(
+              targetDay.day,
+              targetDate.month,
+              targetDate.year
+            )
+          }); //
       }
     } else if (
       typeSwitch === TypesSwitch.months &&
@@ -75,12 +135,19 @@ const Switch: React.FC<PropsSwitch> = ({
     ) {
       setTargetDate({ ...targetDate, year: targetDate.year + 1 });
       if (targetDay?.year && targetDay?.month && targetDay?.day)
-        setTargetDay({ ...targetDay, year: targetDay.year + 1 });
+        setTargetDay({
+          ...targetDay,
+          year: targetDate.year + 1,
+          valid: isValidSwitch(targetDay.day, targetDate.month, targetDate.year)
+        });
     } else if (
       typeSwitch === TypesSwitch.years &&
-      targetDate.years + 12 <= mainPeriod.max
+      targetDate.years + YEAR_VALUES.MONTHS <= mainPeriod.max
     ) {
-      setTargetDate({ ...targetDate, years: targetDate.years + 12 });
+      setTargetDate({
+        ...targetDate,
+        years: targetDate.years + YEAR_VALUES.MONTHS
+      });
     }
   };
 

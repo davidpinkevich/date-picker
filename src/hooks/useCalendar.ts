@@ -20,7 +20,7 @@ const useCalendar = () => {
       YEAR_VALUES.MONTHS,
     year: new Date().getFullYear(),
     month: new Date().getMonth(),
-    day: null
+    day: 1
   });
 
   const [dateContainer, setDateContainer] = useState(
@@ -31,6 +31,7 @@ const useCalendar = () => {
 
   useEffect(() => {
     const base = createDateArray(targetDate.year, targetDate.month, typeStart);
+
     const updateBase = withHolidays ? addHolidays(base) : base;
     setDateContainer(updateBase);
   }, [targetDate, typeStart, withHolidays]);
