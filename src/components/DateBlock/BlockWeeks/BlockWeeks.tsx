@@ -48,7 +48,6 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
       if (range) {
         handleClickRange(year, month, day);
       } else {
-        console.log("kek!!!!!!!!!!!!!!!!!!!!");
         setTargetDay({
           year,
           month: month + 1,
@@ -76,7 +75,6 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                   },
                   index
                 ) => {
-                  console.log("currentMonth: ", currentMonth);
                   return (
                     <React.Fragment key={index}>
                       <StyledDateBlockItem

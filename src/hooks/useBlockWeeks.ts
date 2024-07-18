@@ -23,12 +23,10 @@ const useBlockWeeks = (
       mainPeriod.min <= targetDay.year &&
       mainPeriod.max >= targetDay.year
     ) {
-      console.log("one");
       const { year, month, day } = targetDay;
       setTargetDate({ ...targetDate, year, month: month - 1, day });
     } else {
       if (targetDay?.year && targetDay?.month && targetDay?.day) {
-        console.log("two");
         const { year, month, day } = targetDay;
         setTargetDay({ year, month, day, valid: false });
       }

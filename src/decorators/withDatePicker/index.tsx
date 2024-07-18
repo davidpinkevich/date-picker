@@ -1,6 +1,11 @@
 import React, { type ComponentType, useEffect, useState } from "react";
 
-import { isValidDate, parseStrForDate } from "utils/isValidDate";
+import { INPUT_VALUES } from "constants/data";
+import {
+  isValidDate,
+  parserDateToStr,
+  parserStrToDate
+} from "utils/isValidDate";
 
 import { InputDate } from "components/InputDate/InputDate";
 
@@ -21,10 +26,17 @@ const withDatePicker =
     } | null>(null);
 
     useEffect(() => {
-      if (value.length === 10) {
-        setTargetDay({ ...parseStrForDate(value), valid: isValidDate(value) });
+      if (targetDay?.day && targetDay?.month && targetDay?.year) {
+        setValue(parserDateToStr({ ...targetDay }));
+      }
+    }, [targetDay?.day, targetDay?.month, targetDay?.year]);
+
+    useEffect(() => {
+      if (value.length === INPUT_VALUES.length) {
+        setTargetDay({ ...parserStrToDate(value), valid: isValidDate(value) });
+
         if (isValidDate(value)) {
-          setTargetDay({ ...parseStrForDate(value), valid: true });
+          setTargetDay({ ...parserStrToDate(value), valid: true });
         }
       }
     }, [value]);
@@ -58,7 +70,7 @@ const withDatePicker =
           setTargetDay={setTargetDay}
           viewCalendar={viewCalendar}
           setViewCalendar={setViewCalendar}
-          placeholder="__/__/____ Choose date"
+          placeholder={INPUT_VALUES.placeholder}
         />
         {viewCalendar && <WrappedComponent {...passedProps} />}
       </StyledWrapperDatePicker>
