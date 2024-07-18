@@ -1,4 +1,6 @@
-const parseStrForDate = (str: string) => {
+import { type TypeYear } from "types/contextTypes";
+
+const parserStrToDate = (str: string) => {
   const [day, month, year] = str.split("/");
 
   return {
@@ -8,8 +10,13 @@ const parseStrForDate = (str: string) => {
   };
 };
 
+const parserDateToStr = (dateObject: TypeYear) => {
+  const { year, month, day } = dateObject;
+  return `${day.toString().padStart(2, "0")}/${month.toString().padStart(2, "0")}/${year}`;
+};
+
 const isValidDate = (str: string): boolean => {
-  const { year, month, day } = parseStrForDate(str);
+  const { year, month, day } = parserStrToDate(str);
 
   if (year < 1 || month < 1 || month > 12 || day < 1 || day > 31) {
     return false;
@@ -23,4 +30,4 @@ const isValidDate = (str: string): boolean => {
   return true;
 };
 
-export { isValidDate, parseStrForDate };
+export { isValidDate, parserDateToStr, parserStrToDate };
