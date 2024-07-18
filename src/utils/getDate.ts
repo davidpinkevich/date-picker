@@ -1,4 +1,4 @@
-import { DAYS_OF_WEEK, StartDays } from "constants/data";
+import { DAYS_OF_WEEK, StartDays, YEAR_VALUES } from "constants/data";
 
 import { daysInMonth } from "./daysInMonth";
 import { getToday } from "./getToday";
@@ -28,12 +28,7 @@ const getDateArray = (year: number, month: number) => {
   return daysArray;
 };
 
-const createDateArray = (
-  year: number,
-  month: number,
-  type: string,
-  day: number | null
-) => {
+const createDateArray = (year: number, month: number, type: string) => {
   const daysArray = getDateArray(year, month);
   const today = getToday();
   const currentTypeDays =
@@ -50,11 +45,11 @@ const createDateArray = (
 
     daysArray.unshift(...start);
   }
-  if (daysArray.length < 42) {
-    const newMonth = month + 1 === 12 ? 0 : month + 1;
-    const newYear = month + 1 === 12 ? year + 1 : year;
+  if (daysArray.length < YEAR_VALUES.DAYS_IN_MONTH) {
+    const newMonth = month + 1 === YEAR_VALUES.MONTHS ? 0 : month + 1;
+    const newYear = month + 1 === YEAR_VALUES.MONTHS ? year + 1 : year;
     const end = getDateArray(newYear, newMonth)
-      .slice(0, 42 - daysArray.length)
+      .slice(0, YEAR_VALUES.DAYS_IN_MONTH - daysArray.length)
       .map((item) => ({ ...item, currentMonth: false }));
     daysArray.push(...end);
   }

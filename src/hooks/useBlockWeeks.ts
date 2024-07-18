@@ -4,6 +4,8 @@ import { Context } from "constants/context";
 import { splitArrayIntoChunks } from "utils/splitArrayIntoChunks";
 import { addTargetRange } from "utils/viewRangePicker";
 
+import { YEAR_VALUES } from "constants/data";
+
 import { type TypeYear } from "types/contextTypes";
 import { type TypeTargetDay } from "types/datePickerTypes";
 
@@ -34,8 +36,11 @@ const useBlockWeeks = (
   }, [targetDay?.month, targetDay?.year, targetDay?.day]);
 
   const data = range
-    ? splitArrayIntoChunks(addTargetRange(range, dateContainer), 7)
-    : splitArrayIntoChunks(dateContainer, 7);
+    ? splitArrayIntoChunks(
+        addTargetRange(range, dateContainer),
+        YEAR_VALUES.DAYS
+      )
+    : splitArrayIntoChunks(dateContainer, YEAR_VALUES.DAYS);
 
   return { viewHoliday, mainPeriod, setViewHoliday, data };
 };

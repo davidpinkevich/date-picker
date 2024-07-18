@@ -11,6 +11,8 @@ import { InputDate } from "components/InputDate/InputDate";
 
 import { StyledWrapperDatePicker } from "./styled";
 
+import { type TypeTargetDay } from "types/datePickerTypes";
+
 const withDatePicker =
   <T,>(WrappedComponent: ComponentType<T>) =>
   (props: T) => {
@@ -18,12 +20,7 @@ const withDatePicker =
 
     const [value, setValue] = useState("");
 
-    const [targetDay, setTargetDay] = useState<{
-      year: number;
-      month: number;
-      day: number;
-      valid: boolean;
-    } | null>(null);
+    const [targetDay, setTargetDay] = useState<TypeTargetDay | null>(null);
 
     useEffect(() => {
       if (targetDay?.day && targetDay?.month && targetDay?.year) {

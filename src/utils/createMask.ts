@@ -1,3 +1,5 @@
+import { INPUT_VALUES } from "constants/data";
+
 const createMask = (value: string) => {
   const withNumbers = value.replace(/[^0-9]/g, "");
 
@@ -5,8 +7,7 @@ const createMask = (value: string) => {
     .replace(/(\d{2})(\d)/, "$1/$2")
     .replace(/(\d{2})(\d)/, "$1/$2");
 
-  const maxLength = 10;
-  return newValue.slice(0, maxLength);
+  return newValue.slice(0, INPUT_VALUES.length);
 };
 
 export { createMask };

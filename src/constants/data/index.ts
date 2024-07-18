@@ -1,4 +1,4 @@
-import { BASE_PERIOD } from "./basePeriod";
+import { BASE_PERIOD, YEAR_VALUES } from "./basePeriod";
 import { DAYS_OF_WEEK } from "./daysOfWeek";
 import { HOLIDAYS } from "./holidays";
 import { INPUT_VALUES } from "./inputDatePicker";
@@ -8,6 +8,7 @@ import { TypesSwitch } from "./typesSwitch";
 
 export {
   BASE_PERIOD,
+  YEAR_VALUES,
   DAYS_OF_WEEK,
   HOLIDAYS,
   INPUT_VALUES,

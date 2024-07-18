@@ -11,7 +11,7 @@ export interface TargetDate {
   day: number | null;
 }
 
-interface TypesDateBlockItem {
+export interface TypesDateBlockItem {
   year: number;
   month: number;
   dayNumber: number;

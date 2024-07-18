@@ -1,5 +1,7 @@
+import { YEAR_VALUES } from "constants/data";
+
 const viewYearsPeriod = (years: number) => {
-  return `${years}-${years + 11}`;
+  return `${years}-${years + YEAR_VALUES.MONTHS - 1}`;
 };
 
 const getYearsPeriods = (
@@ -9,7 +11,7 @@ const getYearsPeriods = (
 ): Array<{ value: number; availability: boolean }> => {
   const arr = [];
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < YEAR_VALUES.MONTHS; i++) {
     arr.push({
       value: years + i,
       availability: years + i >= min && years + i <= max

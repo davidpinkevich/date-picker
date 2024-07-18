@@ -1,15 +1,8 @@
 import { HOLIDAYS } from "constants/data";
 
-const addHolidays = (
-  data: Array<{
-    today: boolean;
-    year: number;
-    month: number;
-    dayNumber: number;
-    dayName: string;
-    currentMonth: boolean;
-  }>
-) => {
+import { type TypesDateBlockItem } from "types/contextTypes";
+
+const addHolidays = (data: TypesDateBlockItem[]) => {
   const newData = data.map((item) => {
     const isWeekend = item.dayName === "Sa" || item.dayName === "Su";
     const holiday = HOLIDAYS.find((holiday) => {

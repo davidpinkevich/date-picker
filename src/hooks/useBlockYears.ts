@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 
 import { Context } from "constants/context";
+import { YEAR_VALUES } from "constants/data";
 
 import { type TypeTargetDay } from "types/datePickerTypes";
 
@@ -21,7 +22,7 @@ const useBlockYears = (
     ) {
       const { year, month, day } = targetDay;
       setTargetDate({
-        years: Math.floor(year / 12) * 12,
+        years: Math.floor(year / YEAR_VALUES.MONTHS) * YEAR_VALUES.MONTHS,
         year,
         month: month - 1,
         day
