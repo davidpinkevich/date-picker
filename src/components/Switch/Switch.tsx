@@ -14,7 +14,11 @@ import {
 } from "./Switch.styled";
 import { type PropsSwitch } from "./Switch.types";
 
-const Switch: React.FC<PropsSwitch> = ({ handleSwiperClick }) => {
+const Switch: React.FC<PropsSwitch> = ({
+  handleSwiperClick,
+  targetDay,
+  setTargetDay
+}) => {
   const { targetDate, setTargetDate, typeSwitch, setTypeSwitch, mainPeriod } =
     useContext(Context);
 
@@ -27,14 +31,20 @@ const Switch: React.FC<PropsSwitch> = ({ handleSwiperClick }) => {
       handleSwiperClick();
       if (targetDate.month === 0 && mainPeriod.min !== targetDate.year) {
         setTargetDate({ ...targetDate, month: 11, year: targetDate.year - 1 });
+        if (targetDay?.year && targetDay?.month && targetDay?.day)
+          setTargetDay({ ...targetDay, month: 12, year: targetDate.year - 1 });
       } else {
         setTargetDate({ ...targetDate, month: targetDate.month - 1 });
+        if (targetDay?.year && targetDay?.month && targetDay?.day)
+          setTargetDay({ ...targetDay, month: targetDay.month - 1 });
       }
     } else if (
       typeSwitch === TypesSwitch.months &&
       targetDate.year > mainPeriod.min
     ) {
       setTargetDate({ ...targetDate, year: targetDate.year - 1 });
+      if (targetDay?.year && targetDay?.month && targetDay?.day)
+        setTargetDay({ ...targetDay, year: targetDay.year - 1 });
     } else if (
       typeSwitch === TypesSwitch.years &&
       targetDate.years > mainPeriod.min
@@ -52,14 +62,20 @@ const Switch: React.FC<PropsSwitch> = ({ handleSwiperClick }) => {
       handleSwiperClick();
       if (targetDate.month === 11) {
         setTargetDate({ ...targetDate, month: 0, year: targetDate.year + 1 });
+        if (targetDay?.year && targetDay?.month && targetDay?.day)
+          setTargetDay({ ...targetDay, month: 1, year: targetDay.year + 1 });
       } else {
         setTargetDate({ ...targetDate, month: targetDate.month + 1 });
+        if (targetDay?.year && targetDay?.month && targetDay?.day)
+          setTargetDay({ ...targetDay, month: targetDay.month + 1 });
       }
     } else if (
       typeSwitch === TypesSwitch.months &&
       targetDate.year < mainPeriod.max
     ) {
       setTargetDate({ ...targetDate, year: targetDate.year + 1 });
+      if (targetDay?.year && targetDay?.month && targetDay?.day)
+        setTargetDay({ ...targetDay, year: targetDay.year + 1 });
     } else if (
       typeSwitch === TypesSwitch.years &&
       targetDate.years + 12 <= mainPeriod.max

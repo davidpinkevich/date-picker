@@ -34,7 +34,11 @@ const DateBlock: React.FC<PropsDateBlock> = memo(
 
     return (
       <StyledDateBlock $range={!!range}>
-        <Switch handleSwiperClick={handleSwiperClick} />
+        <Switch
+          handleSwiperClick={handleSwiperClick}
+          targetDay={targetDay}
+          setTargetDay={setTargetDay}
+        />
         {typeSwitch === TypesSwitch.weeks && (
           <StyledDateBlockStringDays>
             {days.map((item, index) => {

@@ -18,6 +18,14 @@ const BlockMonths: React.FC<PropsBlockMonths> = ({
   const handleSwitch = (month: number) => {
     setTargetDate({ ...targetDate, month });
     setTypeSwitch(TypesSwitch.weeks);
+    if (setTargetDay) {
+      setTargetDay({
+        year: targetDate.year,
+        month: month + 1,
+        day: targetDay?.day,
+        valid: true
+      });
+    }
   };
 
   return (

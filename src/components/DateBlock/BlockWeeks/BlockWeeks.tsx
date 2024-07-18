@@ -19,7 +19,7 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
     targetDay,
     setTargetDay
   }) => {
-    const { viewHoliday, setViewHoliday, data } = useBlockWeeks(
+    const { viewHoliday, setViewHoliday, data, mainPeriod } = useBlockWeeks(
       range,
       targetDay,
       setTargetDay
@@ -48,7 +48,13 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
       if (range) {
         handleClickRange(year, month, day);
       } else {
-        // setTargetDay({ year, month, day });
+        console.log("kek!!!!!!!!!!!!!!!!!!!!");
+        setTargetDay({
+          year,
+          month: month + 1,
+          day,
+          valid: mainPeriod.min <= year && mainPeriod.max >= year
+        });
       }
     };
 
@@ -70,6 +76,7 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                   },
                   index
                 ) => {
+                  console.log("currentMonth: ", currentMonth);
                   return (
                     <React.Fragment key={index}>
                       <StyledDateBlockItem
@@ -90,7 +97,13 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                         $currentMonth={currentMonth}
                         $today={today}
                         $targetRange={targetRange}
-                        $targetDay={targetDay?.day === dayNumber}>
+                        $targetDay={
+                          targetDay?.day === dayNumber &&
+                          currentMonth &&
+                          targetDay?.valid &&
+                          mainPeriod.min <= targetDay.year &&
+                          mainPeriod.max >= targetDay.year
+                        }>
                         {dayNumber}
                       </StyledDateBlockItem>
                       {viewHoliday && holiday?.isHoliday && (
