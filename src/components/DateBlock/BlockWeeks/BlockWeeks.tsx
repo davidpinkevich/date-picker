@@ -59,7 +59,7 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
     };
 
     const handleDoubleClick = () => {
-      setViewTodo(true);
+      if (targetDay?.valid) setViewTodo(true);
     };
 
     return (
