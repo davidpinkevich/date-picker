@@ -17,4 +17,4 @@ const StyledTodoHeaderText = styled.p`
   font-weight: 600;
 `;
 
-export { StyledTodoHeader, StyledTodoHeaderTitile, StyledTodoHeaderText };
+export { StyledTodoHeader, StyledTodoHeaderText, StyledTodoHeaderTitile };

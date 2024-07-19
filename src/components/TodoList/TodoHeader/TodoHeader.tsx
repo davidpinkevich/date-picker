@@ -4,8 +4,8 @@ import { MONTHS } from "constants/data";
 
 import {
   StyledTodoHeader,
-  StyledTodoHeaderTitile,
-  StyledTodoHeaderText
+  StyledTodoHeaderText,
+  StyledTodoHeaderTitile
 } from "./TodoHeader.styled";
 import { type PropsTodoHeader } from "./TodoHeader.types";
 
