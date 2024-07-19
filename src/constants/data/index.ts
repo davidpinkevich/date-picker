@@ -8,11 +8,11 @@ import { TypesSwitch } from "./typesSwitch";
 
 export {
   BASE_PERIOD,
-  YEAR_VALUES,
   DAYS_OF_WEEK,
   HOLIDAYS,
   INPUT_VALUES,
   MONTHS,
   StartDays,
-  TypesSwitch
+  TypesSwitch,
+  YEAR_VALUES
 };
