@@ -8,6 +8,7 @@ import {
 } from "utils/isValidDate";
 
 import { InputDate } from "components/InputDate/InputDate";
+import { TodoList } from "components/TodoList/TodoList";
 
 import { StyledWrapperDatePicker } from "./styled";
 
@@ -17,6 +18,8 @@ const withDatePicker =
   <T,>(WrappedComponent: ComponentType<T>) =>
   (props: T) => {
     const [viewCalendar, setViewCalendar] = useState(false);
+
+    const [viewTodo, setViewTodo] = useState(false);
 
     const [value, setValue] = useState("");
 
@@ -42,6 +45,7 @@ const withDatePicker =
       const wrapper = document.querySelector(".StyledWrapperDatePicker");
       if (wrapper && !wrapper.contains(event.target as Node)) {
         setViewCalendar(false);
+        setViewTodo(false);
       }
     };
 
@@ -55,7 +59,8 @@ const withDatePicker =
     const passedProps = {
       ...props,
       targetDay,
-      setTargetDay
+      setTargetDay,
+      setViewTodo
     };
 
     return (
@@ -70,6 +75,11 @@ const withDatePicker =
           placeholder={INPUT_VALUES.placeholder}
         />
         {viewCalendar && <WrappedComponent {...passedProps} />}
+        <TodoList
+          viewTodo={viewTodo}
+          setViewTodo={setViewTodo}
+          targetDay={targetDay}
+        />
       </StyledWrapperDatePicker>
     );
   };
