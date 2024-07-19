@@ -1,5 +1,7 @@
 import React, { type ChangeEvent, useEffect, useState } from "react";
 
+import { LIMIT_RANDOM } from "constants/data";
+import { getRandomId } from "utils/getRandomId";
 import { getTargetKey } from "utils/getTargetKey";
 import { CrossImg } from "assets/icons/cross";
 
@@ -44,7 +46,8 @@ const TodoList: React.FC<PropsTodoList> = ({
   const handleAddTodo = () => {
     const newTodo: TypeTodo = {
       text: input,
-      resolve: false
+      resolve: false,
+      id: getRandomId(LIMIT_RANDOM)
     };
 
     const dateKey = getTargetKey(targetDay);
@@ -87,15 +90,17 @@ const TodoList: React.FC<PropsTodoList> = ({
       <StyledAddBtn onClick={handleAddTodo}>Add Todo</StyledAddBtn>
       {viewTodo && (
         <StyledTodoUl>
-          {todos[getTargetKey(targetDay)]?.map(({ text, resolve }, index) => (
-            <TodoItem
-              key={index}
-              text={text}
-              resolve={resolve}
-              handleStatusChange={() => handleStatusChange(index)}
-              handleDeleteTodo={() => handleDeleteTodo(index)}
-            />
-          ))}
+          {todos[getTargetKey(targetDay)]?.map(
+            ({ text, resolve, id }, index) => (
+              <TodoItem
+                key={id}
+                text={text}
+                resolve={resolve}
+                handleStatusChange={() => handleStatusChange(index)}
+                handleDeleteTodo={() => handleDeleteTodo(index)}
+              />
+            )
+          )}
         </StyledTodoUl>
       )}
     </StyledTodoList>
