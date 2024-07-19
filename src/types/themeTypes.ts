@@ -3,6 +3,10 @@ export interface TypesTheme {
     inputSize: string;
     dateBlockItemSize: string;
     buttonSize: string;
+    todoListTitle: string;
+    todoListInput: string;
+    todoListBtnAdd: string;
+    todoListItem: string;
   };
 
   colors: {

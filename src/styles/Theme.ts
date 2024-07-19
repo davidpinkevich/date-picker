@@ -4,7 +4,11 @@ const Theme: DefaultTheme = {
   fontSizes: {
     inputSize: "15px",
     dateBlockItemSize: "13px",
-    buttonSize: "12px"
+    buttonSize: "12px",
+    todoListTitle: "18px",
+    todoListInput: "15px",
+    todoListBtnAdd: "15px",
+    todoListItem: "14px"
   },
   colors: {
     mainDark: "#333333",
