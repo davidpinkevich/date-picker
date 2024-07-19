@@ -6,6 +6,7 @@ import { LIMIT_RANDOM } from "./limitRandom";
 import { MONTHS } from "./monthsOfWeek";
 import { StartDays } from "./startDays";
 import { TypesSwitch } from "./typesSwitch";
+import { COLORS_HOLIDAY } from "./colorsHoliday";
 
 export {
   BASE_PERIOD,
@@ -16,5 +17,6 @@ export {
   MONTHS,
   StartDays,
   TypesSwitch,
-  YEAR_VALUES
+  YEAR_VALUES,
+  COLORS_HOLIDAY
 };

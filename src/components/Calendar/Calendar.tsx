@@ -20,15 +20,18 @@ const Calendar: React.FC<PropsCalendar> = ({
   handleMouseRange,
   setViewTodo,
   todos,
+  colorHoliday = "red",
   min = BASE_PERIOD.MIN,
   max = BASE_PERIOD.MAX
 }) => {
-  const { setTypeStart, setMainPeriod, setWithHolidays } = useContext(Context);
+  const { setTypeStart, setMainPeriod, setWithHolidays, setColorHoliday } =
+    useContext(Context);
   useEffect(() => {
     setTypeStart(typeStart);
     setMainPeriod({ min, max });
     setWithHolidays(withHolidays);
-  }, [typeStart, setMainPeriod]);
+    setColorHoliday(colorHoliday);
+  }, [typeStart, setMainPeriod, colorHoliday]);
 
   return (
     <ThemeContainer>

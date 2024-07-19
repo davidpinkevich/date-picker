@@ -17,7 +17,7 @@ export const FromMonday: Story = {
     typeStart: "Mo",
     min: 2015,
     max: 2041,
-    withHolidays: true
+    withHolidays: false
   }
 };
 
@@ -25,6 +25,8 @@ export const FromSunday: Story = {
   args: {
     typeStart: "Su",
     min: 2010,
-    max: 2030
+    max: 2030,
+    withHolidays: true,
+    colorHoliday: "apple"
   }
 };

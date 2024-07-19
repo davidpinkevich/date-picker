@@ -23,11 +23,8 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
     setViewTodo,
     todos
   }) => {
-    const { viewHoliday, setViewHoliday, data, mainPeriod } = useBlockWeeks(
-      range,
-      targetDay,
-      setTargetDay
-    );
+    const { viewHoliday, setViewHoliday, data, mainPeriod, colorHoliday } =
+      useBlockWeeks(range, targetDay, setTargetDay);
 
     const handleMouseOver = (
       value: string,
@@ -79,14 +76,16 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                     holiday,
                     currentMonth,
                     today,
-                    targetRange
+                    targetRange,
+                    isWeekend
                   },
                   index
                 ) => {
                   return (
                     <React.Fragment key={index}>
                       <StyledDateBlockItem
-                        $isHoliday={holiday?.isHoliday}
+                        $isHoliday={holiday?.isHoliday ? colorHoliday : false}
+                        $isWeekend={isWeekend}
                         key={index}
                         onClick={() => handleClick(year, month, dayNumber)}
                         onDoubleClick={handleDoubleClick}

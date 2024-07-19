@@ -5,8 +5,10 @@ import { type TypeContext } from "types/contextTypes";
 const Context = createContext<TypeContext>({
   typeStart: "Mo",
   withHolidays: false,
+  colorHoliday: "red",
   mainPeriod: { min: 2020, max: 2026 },
   setDateContainer: () => {},
+  setColorHoliday: () => {},
   setWithHolidays: () => {},
   setMainPeriod: () => {},
   setTypeStart: () => {},

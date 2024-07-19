@@ -4,27 +4,16 @@ import { type TypesDateBlockItem } from "types/contextTypes";
 
 const addHolidays = (data: TypesDateBlockItem[]) => {
   const newData = data.map((item) => {
-    const isWeekend = item.dayName === "Sa" || item.dayName === "Su";
     const holiday = HOLIDAYS.find((holiday) => {
       return holiday.month === item.month && holiday.day === item.dayNumber;
     });
 
     return {
       ...item,
-      holiday: holiday
-        ? {
-            isHoliday: true,
-            title: holiday.name
-          }
-        : isWeekend
-          ? {
-              isHoliday: true,
-              title: ""
-            }
-          : {
-              isHoliday: false,
-              title: ""
-            }
+      holiday: holiday && {
+        isHoliday: true,
+        title: holiday.name
+      }
     };
   });
 

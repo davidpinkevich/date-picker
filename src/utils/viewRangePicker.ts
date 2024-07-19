@@ -40,6 +40,7 @@ const addTargetRange = (
     month: number;
     dayNumber: number;
     dayName: string;
+    isWeekend: boolean;
     currentMonth: boolean;
     holiday?: { isHoliday: boolean; title: string };
   }>

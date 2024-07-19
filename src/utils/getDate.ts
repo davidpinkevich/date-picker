@@ -55,16 +55,26 @@ const createDateArray = (year: number, month: number, type: string) => {
   }
 
   const updateDaysArray = daysArray.map((item) => {
+    const isWeekend = item.dayName === "Sa" || item.dayName === "Su";
     if (
       item.year === today.year &&
       item.month === today.month &&
       item.dayNumber === today.day
     ) {
-      return { ...item, today: true };
+      return {
+        ...item,
+        isWeekend,
+        today: true
+      };
     } else {
-      return { ...item, today: false };
+      return {
+        ...item,
+        isWeekend,
+        today: false
+      };
     }
   });
+
   return updateDaysArray;
 };
 

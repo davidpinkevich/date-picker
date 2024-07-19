@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+import { COLORS_HOLIDAY } from "constants/data";
 
 const opacityChange = keyframes`
   0% { opacity: 0.2; } 
@@ -21,7 +22,8 @@ const StyledDateBlockString = styled.div`
 const StyledDateBlockItem = styled.div<{
   $currentMonth: boolean;
   $today: boolean;
-  $isHoliday: boolean;
+  $isHoliday: boolean | "red" | "lightRed" | "apple";
+  $isWeekend: boolean;
   $targetRange: { start: boolean; end?: boolean; middle?: boolean } | undefined;
   $targetDay: boolean;
   $isTodo: boolean;
@@ -64,8 +66,10 @@ const StyledDateBlockItem = styled.div<{
       return props.theme.colors.white;
     } else if (props.$targetRange?.start || props.$targetRange?.end) {
       return props.theme.colors.white;
-    } else if (props.$isHoliday) {
+    } else if (props.$isWeekend) {
       return props.theme.colors.mainRed;
+    } else if (typeof props.$isHoliday === "string") {
+      return COLORS_HOLIDAY[props.$isHoliday];
     } else if (props.$targetRange?.middle) {
       return "#2F80ED";
     } else if (props.$currentMonth) {

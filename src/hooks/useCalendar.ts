@@ -7,6 +7,7 @@ import { createDateArray } from "utils/getDate";
 const useCalendar = () => {
   const [value, setValue] = useState("");
   const [typeStart, setTypeStart] = useState<"Mo" | "Su">("Mo");
+  const [colorHoliday, setColorHoliday] = useState("red");
   const [withHolidays, setWithHolidays] = useState(false);
   const [mainPeriod, setMainPeriod] = useState({
     min: BASE_PERIOD.MIN,
@@ -49,7 +50,9 @@ const useCalendar = () => {
     targetDate,
     setTargetDate,
     withHolidays,
-    setWithHolidays
+    setWithHolidays,
+    colorHoliday,
+    setColorHoliday
   };
 };
 

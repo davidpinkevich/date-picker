@@ -13,7 +13,7 @@ const useBlockWeeks = (
   targetDay: TypeTargetDay,
   setTargetDay?: (value: TypeTargetDay) => void
 ) => {
-  const { dateContainer, targetDate, setTargetDate, mainPeriod } =
+  const { dateContainer, targetDate, setTargetDate, mainPeriod, colorHoliday } =
     useContext(Context);
   const [viewHoliday, setViewHoliday] = useState("");
 
@@ -41,7 +41,7 @@ const useBlockWeeks = (
       )
     : splitArrayIntoChunks(dateContainer, YEAR_VALUES.DAYS);
 
-  return { viewHoliday, mainPeriod, setViewHoliday, data };
+  return { viewHoliday, mainPeriod, setViewHoliday, data, colorHoliday };
 };
 
 export { useBlockWeeks };

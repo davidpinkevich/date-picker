@@ -18,6 +18,7 @@ export interface TypesDateBlockItem {
   dayName: string;
   currentMonth: boolean;
   today: boolean;
+  isWeekend: boolean;
   holiday?: { isHoliday: boolean; title: string };
 }
 
@@ -29,7 +30,9 @@ export interface TypeContext {
   dateContainer: TypesDateBlockItem[];
   typeSwitch: string;
   targetDate: TargetDate;
+  colorHoliday: "red" | "lightRed" | "apple";
   setDateContainer: (value: TypesDateBlockItem[]) => void;
+  setColorHoliday: (value: "red" | "lightRed" | "apple") => void;
   setMainPeriod: (value: { min: number; max: number }) => void;
   setTargetDate: (newDate: TargetDate) => void;
   setTypeSwitch: (value: string) => void;
