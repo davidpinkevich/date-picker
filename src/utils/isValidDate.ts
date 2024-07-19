@@ -40,4 +40,4 @@ const isValidDate = (str: string): boolean => {
   return true;
 };
 
-export { isValidDate, parserDateToStr, parserStrToDate, isValidSwitch };
+export { isValidDate, isValidSwitch, parserDateToStr, parserStrToDate };

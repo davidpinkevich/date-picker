@@ -33,7 +33,7 @@ function checkDateRange(sort: TypeYear[], value: TypeYear) {
 }
 
 const addTargetRange = (
-  timePeriod: Array<TypeYear>,
+  timePeriod: TypeYear[],
   monthData: Array<{
     today: boolean;
     year: number;
