@@ -22,7 +22,8 @@ const DateBlock: React.FC<PropsDateBlock> = memo(
     handleMouseRange,
     targetDay,
     setTargetDay,
-    setViewTodo
+    setViewTodo,
+    todos
   }) => {
     const { typeSwitch, typeStart } = useContext(Context);
     const [move, setMove] = useState(false);
@@ -66,6 +67,7 @@ const DateBlock: React.FC<PropsDateBlock> = memo(
             handleMouseRange={handleMouseRange}
             setTargetDay={setTargetDay}
             setViewTodo={setViewTodo}
+            todos={todos}
           />
         )}
         {typeSwitch === TypesSwitch.months && (

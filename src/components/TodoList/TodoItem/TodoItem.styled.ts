@@ -15,7 +15,7 @@ const StyledTodoItem = styled.li`
   }
 `;
 
-const StyledTodoItemText = styled.li`
+const StyledTodoItemText = styled.p`
   font-size: ${(props) => props.theme.fontSizes.todoListItem};
   padding: 5px;
   width: 85%;

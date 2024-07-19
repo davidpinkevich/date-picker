@@ -2,6 +2,8 @@ import React, { memo } from "react";
 
 import { useBlockWeeks } from "hooks/useBlockWeeks";
 
+import { getTargetKey } from "utils/getTargetKey";
+
 import {
   StyledDateBlockItem,
   StyledDateBlockString,
@@ -18,7 +20,8 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
     handleMouseRange,
     targetDay,
     setTargetDay,
-    setViewTodo
+    setViewTodo,
+    todos
   }) => {
     const { viewHoliday, setViewHoliday, data, mainPeriod } = useBlockWeeks(
       range,
@@ -97,6 +100,15 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                         }
                         onMouseOut={() =>
                           handleMouseOut(year, month, dayNumber)
+                        }
+                        $isTodo={
+                          !!todos[
+                            getTargetKey({
+                              year,
+                              month: month + 1,
+                              day: dayNumber
+                            })
+                          ]?.length
                         }
                         $currentMonth={currentMonth}
                         $today={today}

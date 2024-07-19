@@ -24,11 +24,14 @@ const StyledDateBlockItem = styled.div<{
   $isHoliday: boolean;
   $targetRange: { start: boolean; end?: boolean; middle?: boolean } | undefined;
   $targetDay: boolean;
+  $isTodo: boolean;
 }>`
   cursor: pointer;
   width: 32px;
   height: 32px;
   transition: all 0.2s;
+  border: ${(props) =>
+    props.$isTodo ? `2px solid ${props.theme.colors.targetBlue}` : "none"};
   border-radius: ${(props) =>
     props.$targetRange?.start
       ? "8px 0px 0px 8px"

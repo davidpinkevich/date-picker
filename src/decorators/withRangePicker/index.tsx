@@ -10,8 +10,8 @@ const withRangePicker =
     const [range, setRange] = useState<
       Array<{ year: number; month: number; day: number }>
     >([
-      { year: 2024, month: 6, day: 1 },
-      { year: 2024, month: 6, day: 20 }
+      // { year: 2024, month: 6, day: 1 },
+      // { year: 2024, month: 6, day: 20 }
     ]);
 
     const handleClickRange = (year: number, month: number, day: number) => {

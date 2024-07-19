@@ -20,10 +20,10 @@ import { type PropsTodoList } from "./TodoList.types";
 const TodoList: React.FC<PropsTodoList> = ({
   targetDay,
   viewTodo,
-  setViewTodo
+  setViewTodo,
+  todos,
+  setTodos
 }) => {
-  const [todos, setTodos] = useState<Record<string, TypeTodo[]>>({});
-
   const [input, setInput] = useState("");
 
   const handleClose = () => {
@@ -53,31 +53,31 @@ const TodoList: React.FC<PropsTodoList> = ({
     const dateKey = getTargetKey(targetDay);
 
     if (input.trim().length) {
-      setTodos((prevTodos) => ({
-        ...prevTodos,
-        [dateKey]: [...(prevTodos[dateKey] || []), newTodo]
-      }));
+      setTodos({
+        ...todos,
+        [dateKey]: [...(todos[dateKey] || []), newTodo]
+      });
 
       setInput("");
     }
   };
 
   const handleStatusChange = (index: number) => {
-    setTodos((prevTodos) => ({
-      ...prevTodos,
-      [getTargetKey(targetDay)]: prevTodos[getTargetKey(targetDay)]?.map(
+    setTodos({
+      ...todos,
+      [getTargetKey(targetDay)]: todos[getTargetKey(targetDay)]?.map(
         (todo, i) => (i === index ? { ...todo, resolve: !todo.resolve } : todo)
       )
-    }));
+    });
   };
 
   const handleDeleteTodo = (index: number) => {
-    setTodos((prevTodos) => ({
-      ...prevTodos,
-      [getTargetKey(targetDay)]: prevTodos[getTargetKey(targetDay)]?.filter(
+    setTodos({
+      ...todos,
+      [getTargetKey(targetDay)]: todos[getTargetKey(targetDay)]?.filter(
         (_, i) => index !== i
       )
-    }));
+    });
   };
 
   return (

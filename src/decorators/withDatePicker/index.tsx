@@ -13,6 +13,7 @@ import { TodoList } from "components/TodoList/TodoList";
 import { StyledWrapperDatePicker } from "./styled";
 
 import { type TypeTargetDay } from "types/datePickerTypes";
+import { TypeTodo } from "components/TodoList/TodoItem/TodoItem.types";
 
 const withDatePicker =
   <T,>(WrappedComponent: ComponentType<T>) =>
@@ -20,6 +21,8 @@ const withDatePicker =
     const [viewCalendar, setViewCalendar] = useState(false);
 
     const [viewTodo, setViewTodo] = useState(false);
+
+    const [todos, setTodos] = useState<Record<string, TypeTodo[]>>({});
 
     const [value, setValue] = useState("");
 
@@ -60,7 +63,8 @@ const withDatePicker =
       ...props,
       targetDay,
       setTargetDay,
-      setViewTodo
+      setViewTodo,
+      todos
     };
 
     return (
@@ -76,6 +80,8 @@ const withDatePicker =
         />
         {viewCalendar && <WrappedComponent {...passedProps} />}
         <TodoList
+          todos={todos}
+          setTodos={setTodos}
           viewTodo={viewTodo}
           setViewTodo={setViewTodo}
           targetDay={targetDay}
