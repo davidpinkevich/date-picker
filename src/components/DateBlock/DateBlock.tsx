@@ -16,7 +16,14 @@ import {
 import { type PropsDateBlock } from "./DateBlock.types";
 
 const DateBlock: React.FC<PropsDateBlock> = memo(
-  ({ range, handleClickRange, handleMouseRange, targetDay, setTargetDay }) => {
+  ({
+    range,
+    handleClickRange,
+    handleMouseRange,
+    targetDay,
+    setTargetDay,
+    setViewTodo
+  }) => {
     const { typeSwitch, typeStart } = useContext(Context);
     const [move, setMove] = useState(false);
 
@@ -58,6 +65,7 @@ const DateBlock: React.FC<PropsDateBlock> = memo(
             handleClickRange={handleClickRange}
             handleMouseRange={handleMouseRange}
             setTargetDay={setTargetDay}
+            setViewTodo={setViewTodo}
           />
         )}
         {typeSwitch === TypesSwitch.months && (

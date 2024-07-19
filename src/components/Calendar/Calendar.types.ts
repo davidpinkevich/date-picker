@@ -7,6 +7,7 @@ export interface PropsCalendar {
   targetDay?: TypeTargetDay | null;
   withRangePicker?: boolean;
   range?: TypeYear[] | null;
+  setViewTodo?: (value: boolean) => void;
   handleClickRange?: (year: number, month: number, day: number) => void;
   setTargetDay?: (value: TypeTargetDay) => void;
   handleMouseRange?: (

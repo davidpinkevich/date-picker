@@ -3,9 +3,8 @@ import React, { useContext } from "react";
 import { Context } from "constants/context";
 import { MONTHS, TypesSwitch, YEAR_VALUES } from "constants/data";
 import { viewYearsPeriod } from "utils/getYearsPeriods";
-import { ArrowImg } from "assets/icons/arrow";
-
 import { isValidSwitch } from "utils/isValidDate";
+import { ArrowImg } from "assets/icons/arrow";
 
 import {
   StyledArrowLeft,

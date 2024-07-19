@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import { BASE_PERIOD, YEAR_VALUES } from "constants/data";
-
 import { addHolidays } from "utils/addHolidays";
 import { createDateArray } from "utils/getDate";
 

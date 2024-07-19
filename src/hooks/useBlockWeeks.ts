@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 
 import { Context } from "constants/context";
+import { YEAR_VALUES } from "constants/data";
 import { splitArrayIntoChunks } from "utils/splitArrayIntoChunks";
 import { addTargetRange } from "utils/viewRangePicker";
-
-import { YEAR_VALUES } from "constants/data";
 
 import { type TypeYear } from "types/contextTypes";
 import { type TypeTargetDay } from "types/datePickerTypes";

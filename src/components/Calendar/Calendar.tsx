@@ -18,6 +18,7 @@ const Calendar: React.FC<PropsCalendar> = ({
   setTargetDay,
   handleClickRange,
   handleMouseRange,
+  setViewTodo,
   min = BASE_PERIOD.MIN,
   max = BASE_PERIOD.MAX
 }) => {
@@ -37,6 +38,7 @@ const Calendar: React.FC<PropsCalendar> = ({
           handleClickRange={handleClickRange}
           handleMouseRange={handleMouseRange}
           setTargetDay={setTargetDay}
+          setViewTodo={setViewTodo}
         />
         {ButtonClear}
       </StyledCalendar>

@@ -17,7 +17,8 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
     handleClickRange,
     handleMouseRange,
     targetDay,
-    setTargetDay
+    setTargetDay,
+    setViewTodo
   }) => {
     const { viewHoliday, setViewHoliday, data, mainPeriod } = useBlockWeeks(
       range,
@@ -57,6 +58,10 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
       }
     };
 
+    const handleDoubleClick = () => {
+      setViewTodo(true);
+    };
+
     return (
       <StyledMainBlock $move={move}>
         {data.map((str, index) => {
@@ -81,6 +86,7 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                         $isHoliday={holiday?.isHoliday}
                         key={index}
                         onClick={() => handleClick(year, month, dayNumber)}
+                        onDoubleClick={handleDoubleClick}
                         onMouseOver={() =>
                           handleMouseOver(
                             holiday?.title,
