@@ -12,14 +12,15 @@ module.exports = [
     output: [
       {
         file: packageJson.module,
-        format: "cjs"
+        format: "cjs",
+        sourcemap: true
       },
       {
         file: packageJson.main,
-        format: "esm"
+        format: "esm",
+        sourcemap: true
       }
     ],
-    external: ["react"],
     plugins: [
       typescript({
         tsconfig: "./tsconfig.json",
@@ -43,7 +44,7 @@ module.exports = [
     external: ["react", "react-dom", "styled-components"]
   },
   {
-    input: "dist/esm/types/index.d.ts",
+    input: "src/index.ts",
     output: [{ file: packageJson.types, format: "esm" }],
     plugins: [dts.default()]
   }

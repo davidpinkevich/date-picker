@@ -1,5 +1,8 @@
 {
-  "name": "date-picker",
+  "name": "@davidpinkevich/date-picker",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/davidpinkevich"
+  },
   "version": "1.0.0",
   "author": "davidpinkevich",
   "main": "dist/esm/index.js",
