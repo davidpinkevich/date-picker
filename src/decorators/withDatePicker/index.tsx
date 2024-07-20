@@ -9,6 +9,8 @@ import {
 
 import { InputDate } from "components/InputDate/InputDate";
 import { TodoList } from "components/TodoList/TodoList";
+import { ErrorBoundary } from "components/ErrorBoundary/ErrorBoundary";
+import { ContextContainer } from "components/ContextContainer/ContextContainer";
 
 import { StyledWrapperDatePicker } from "./styled";
 
@@ -68,25 +70,29 @@ const withDatePicker =
     };
 
     return (
-      <StyledWrapperDatePicker className="StyledWrapperDatePicker">
-        <InputDate
-          value={value}
-          setValue={setValue}
-          targetDay={targetDay}
-          setTargetDay={setTargetDay}
-          viewCalendar={viewCalendar}
-          setViewCalendar={setViewCalendar}
-          placeholder={INPUT_VALUES.placeholder}
-        />
-        {viewCalendar && <WrappedComponent {...passedProps} />}
-        <TodoList
-          todos={todos}
-          setTodos={setTodos}
-          viewTodo={viewTodo}
-          setViewTodo={setViewTodo}
-          targetDay={targetDay}
-        />
-      </StyledWrapperDatePicker>
+      <ContextContainer>
+        <ErrorBoundary>
+          <StyledWrapperDatePicker className="StyledWrapperDatePicker">
+            <InputDate
+              value={value}
+              setValue={setValue}
+              targetDay={targetDay}
+              setTargetDay={setTargetDay}
+              viewCalendar={viewCalendar}
+              setViewCalendar={setViewCalendar}
+              placeholder={INPUT_VALUES.placeholder}
+            />
+            {viewCalendar && <WrappedComponent {...passedProps} />}
+            <TodoList
+              todos={todos}
+              setTodos={setTodos}
+              viewTodo={viewTodo}
+              setViewTodo={setViewTodo}
+              targetDay={targetDay}
+            />
+          </StyledWrapperDatePicker>
+        </ErrorBoundary>
+      </ContextContainer>
     );
   };
 
