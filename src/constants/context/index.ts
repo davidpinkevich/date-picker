@@ -1,12 +1,17 @@
 import { createContext } from "react";
 
+import { BASE_PERIOD } from "constants/data";
+
 import { type TypeContext } from "types/contextTypes";
+import { getToday } from "utils/getToday";
+
+const today = getToday();
 
 const Context = createContext<TypeContext>({
   typeStart: "Mo",
   withHolidays: false,
   colorHoliday: "red",
-  mainPeriod: { min: 2020, max: 2026 },
+  mainPeriod: { min: BASE_PERIOD.MIN, max: BASE_PERIOD.MAX },
   setDateContainer: () => {},
   setColorHoliday: () => {},
   setWithHolidays: () => {},
@@ -15,10 +20,10 @@ const Context = createContext<TypeContext>({
   typeSwitch: "weeks",
   setTypeSwitch: () => {},
   targetDate: {
-    years: 2020,
-    year: 2024,
-    month: 6,
-    day: null
+    years: BASE_PERIOD.YEARS,
+    year: today.year,
+    month: today.month,
+    day: today.day
   },
   setTargetDate: () => {},
   dateContainer: []
