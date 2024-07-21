@@ -4,6 +4,7 @@ import { ButtonClear } from "components/ButtonClear/ButtonClear";
 import { Calendar } from "components/Calendar/Calendar";
 import { ContextContainer } from "components/ContextContainer/ContextContainer";
 import { ErrorBoundary } from "components/ErrorBoundary/ErrorBoundary";
+import { ThemeContainer } from "components/ThemeContainer/ThemeContainer";
 
 import { StyledWrapperDateRange } from "./DateRangeCalendar.styled";
 import { type PropsDateRangeCalendar } from "./DateRangeCalendar.types";
@@ -54,10 +55,12 @@ const DateRangeCalendar: React.FC<PropsDateRangeCalendar> = (props) => {
   return (
     <ContextContainer>
       <ErrorBoundary>
-        <StyledWrapperDateRange>
-          <Calendar {...passedProps} />
-          <ButtonClear onClick={handleClear} label="Clear" />
-        </StyledWrapperDateRange>
+        <ThemeContainer>
+          <StyledWrapperDateRange>
+            <Calendar {...passedProps} />
+            <ButtonClear onClick={handleClear} label="Clear" />
+          </StyledWrapperDateRange>
+        </ThemeContainer>
       </ErrorBoundary>
     </ContextContainer>
   );

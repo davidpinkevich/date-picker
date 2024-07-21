@@ -7,6 +7,7 @@ import { Calendar } from "components/Calendar/Calendar";
 import { ContextContainer } from "components/ContextContainer/ContextContainer";
 import { ErrorBoundary } from "components/ErrorBoundary/ErrorBoundary";
 import { InputDate } from "components/InputDate/InputDate";
+import { ThemeContainer } from "components/ThemeContainer/ThemeContainer";
 import { TodoList } from "components/TodoList/TodoList";
 
 import { StyledWrapperDatePicker } from "./DatePicker.styled";
@@ -52,25 +53,27 @@ const DatePicker: React.FC<PropsDatePicker> = (props) => {
   return (
     <ContextContainer>
       <ErrorBoundary>
-        <StyledWrapperDatePicker className="StyledWrapperDatePicker">
-          <InputDate
-            value={value}
-            setValue={setValue}
-            targetDay={targetDay}
-            setTargetDay={setTargetDay}
-            viewCalendar={viewCalendar}
-            setViewCalendar={setViewCalendar}
-            placeholder={INPUT_VALUES.placeholder}
-          />
-          {viewCalendar && <Calendar {...passedProps} />}
-          <TodoList
-            todos={todos}
-            setTodos={setTodos}
-            viewTodo={viewTodo}
-            setViewTodo={setViewTodo}
-            targetDay={targetDay}
-          />
-        </StyledWrapperDatePicker>
+        <ThemeContainer>
+          <StyledWrapperDatePicker className="StyledWrapperDatePicker">
+            <InputDate
+              value={value}
+              setValue={setValue}
+              targetDay={targetDay}
+              setTargetDay={setTargetDay}
+              viewCalendar={viewCalendar}
+              setViewCalendar={setViewCalendar}
+              placeholder={INPUT_VALUES.placeholder}
+            />
+            {viewCalendar && <Calendar {...passedProps} />}
+            <TodoList
+              todos={todos}
+              setTodos={setTodos}
+              viewTodo={viewTodo}
+              setViewTodo={setViewTodo}
+              targetDay={targetDay}
+            />
+          </StyledWrapperDatePicker>
+        </ThemeContainer>
       </ErrorBoundary>
     </ContextContainer>
   );

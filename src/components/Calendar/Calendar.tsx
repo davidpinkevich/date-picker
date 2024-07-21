@@ -4,7 +4,6 @@ import { Context } from "constants/context";
 import { BASE_PERIOD } from "constants/data";
 
 import { DateBlock } from "components/DateBlock/DateBlock";
-import { ThemeContainer } from "components/ThemeContainer/ThemeContainer";
 
 import { StyledCalendar } from "./Calendar.styled";
 import { type PropsCalendar } from "./Calendar.types";
@@ -34,20 +33,18 @@ const Calendar: React.FC<PropsCalendar> = ({
   }, [typeStart, setMainPeriod, colorHoliday]);
 
   return (
-    <ThemeContainer>
-      <StyledCalendar>
-        <DateBlock
-          range={range}
-          targetDay={targetDay}
-          handleClickRange={handleClickRange}
-          handleMouseRange={handleMouseRange}
-          setTargetDay={setTargetDay}
-          setViewTodo={setViewTodo}
-          todos={todos}
-        />
-        {ButtonClear}
-      </StyledCalendar>
-    </ThemeContainer>
+    <StyledCalendar>
+      <DateBlock
+        range={range}
+        targetDay={targetDay}
+        handleClickRange={handleClickRange}
+        handleMouseRange={handleMouseRange}
+        setTargetDay={setTargetDay}
+        setViewTodo={setViewTodo}
+        todos={todos}
+      />
+      {ButtonClear}
+    </StyledCalendar>
   );
 };
 
