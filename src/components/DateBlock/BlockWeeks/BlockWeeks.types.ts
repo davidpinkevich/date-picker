@@ -1,4 +1,5 @@
-import { TypeTodo } from "components/TodoList/TodoItem/TodoItem.types";
+import { type TypeTodo } from "components/TodoList/TodoItem/TodoItem.types";
+
 import { type TypeYear } from "types/contextTypes";
 import { type TypeTargetDay } from "types/datePickerTypes";
 

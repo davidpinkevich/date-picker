@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+
 import { COLORS_HOLIDAY } from "constants/data";
 
 const opacityChange = keyframes`

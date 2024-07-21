@@ -10,7 +10,7 @@ import { StyledCalendar } from "./Calendar.styled";
 import { type PropsCalendar } from "./Calendar.types";
 
 const Calendar: React.FC<PropsCalendar> = ({
-  typeStart,
+  typeStart = "Mo",
   withHolidays = true,
   range,
   ButtonClear,

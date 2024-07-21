@@ -1,2 +1,1 @@
-export * from "./components/DatePicker";
-export * from "./components/DateRangeCalendar";
+export * from "./components/Testik/Testik";

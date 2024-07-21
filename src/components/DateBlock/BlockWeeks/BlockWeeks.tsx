@@ -1,8 +1,7 @@
 import React, { memo } from "react";
 
-import { useBlockWeeks } from "hooks/useBlockWeeks";
-
 import { getTargetKey } from "utils/getTargetKey";
+import { useBlockWeeks } from "hooks/useBlockWeeks";
 
 import {
   StyledDateBlockItem,
@@ -101,6 +100,7 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                           handleMouseOut(year, month, dayNumber)
                         }
                         $isTodo={
+                          todos &&
                           !!todos[
                             getTargetKey({
                               year,
