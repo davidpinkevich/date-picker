@@ -20,4 +20,4 @@ const StyledFallbackText = styled.p`
   font-weight: 600;
 `;
 
-export { StyledFallback, StyledFallbackTitle, StyledFallbackText };
+export { StyledFallback, StyledFallbackText, StyledFallbackTitle };

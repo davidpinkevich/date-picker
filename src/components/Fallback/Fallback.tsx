@@ -2,8 +2,8 @@ import React from "react";
 
 import {
   StyledFallback,
-  StyledFallbackTitle,
-  StyledFallbackText
+  StyledFallbackText,
+  StyledFallbackTitle
 } from "./Fallback.styled";
 
 const Fallback: React.FC<{ logger: string }> = ({ logger }) => {

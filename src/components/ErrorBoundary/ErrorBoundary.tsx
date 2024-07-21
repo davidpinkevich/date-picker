@@ -1,11 +1,11 @@
 import React, { Component, type ErrorInfo, type ReactNode } from "react";
 
-import {
-  TypeErrorBoundaryProps,
-  TypeErrorBoundaryState
-} from "./ErrorBoundary.types";
-
 import { Fallback } from "../Fallback/Fallback";
+
+import {
+  type TypeErrorBoundaryProps,
+  type TypeErrorBoundaryState
+} from "./ErrorBoundary.types";
 
 class ErrorBoundary extends Component<
   TypeErrorBoundaryProps,

@@ -1,5 +1,6 @@
+import { type TypeTodo } from "./TodoItem/TodoItem.types";
+
 import { type TypeTargetDay } from "types/datePickerTypes";
-import { TypeTodo } from "./TodoItem/TodoItem.types";
 
 export interface PropsTodoList {
   targetDay: TypeTargetDay;
