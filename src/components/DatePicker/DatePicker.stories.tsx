@@ -14,19 +14,25 @@ type Story = StoryObj<typeof Calendar>;
 
 export const FromMonday: Story = {
   args: {
-    // typeStart: "Mo",
-    // min: 2015,
-    // max: 2041,
-    // withHolidays: false
+    typeStart: "Mo"
   }
 };
 
 export const FromSunday: Story = {
   args: {
-    typeStart: "Su",
-    min: 2010,
-    max: 2030,
+    typeStart: "Su"
+  }
+};
+
+export const WithHolidays: Story = {
+  args: {
     withHolidays: true,
     colorHoliday: "apple"
+  }
+};
+
+export const WithoutHolidays: Story = {
+  args: {
+    withHolidays: false
   }
 };
