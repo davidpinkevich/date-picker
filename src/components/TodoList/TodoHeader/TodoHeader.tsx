@@ -15,7 +15,7 @@ const TodoHeader: React.FC<PropsTodoHeader> = ({ targetDay }) => {
       <StyledTodoHeaderTitile>
         {targetDay?.day}{" "}
         {targetDay?.month &&
-          MONTHS.find((item) => item.id === targetDay?.month - 1).name}{" "}
+          MONTHS.find((item) => item.id === targetDay?.month - 1)?.name}{" "}
         {targetDay?.year}
       </StyledTodoHeaderTitile>
 
