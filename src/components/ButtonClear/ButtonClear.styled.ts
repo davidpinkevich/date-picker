@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledButtonClear = styled.button`
-  width: 250px;
+  width: 100%;
   height: 36px;
   font-size: ${(props) => props.theme.fontSizes.buttonSize};
   font-weight: 600;
