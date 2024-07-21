@@ -31,7 +31,8 @@ const TodoList: React.FC<PropsTodoList> = ({
   };
 
   useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem("todos")) || {};
+    const storedTodos: Record<string, TypeTodo[]> =
+      JSON.parse(localStorage.getItem("todos")) || {};
     setTodos(storedTodos);
   }, []);
 
