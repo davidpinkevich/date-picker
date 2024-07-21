@@ -33,7 +33,7 @@ const InputDate: React.FC<PropsInputDate> = ({
         value={value}
         $targetDay={targetDay}
         onChange={handleInputChange}
-        onClick={handleClick}
+        onFocus={handleClick}
         type="text"
         placeholder={placeholder}
       />
