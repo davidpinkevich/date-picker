@@ -1,9 +1,9 @@
 import { createContext } from "react";
 
 import { BASE_PERIOD } from "constants/data";
+import { getToday } from "utils/getToday";
 
 import { type TypeContext } from "types/contextTypes";
-import { getToday } from "utils/getToday";
 
 const today = getToday();
 
