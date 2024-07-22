@@ -11,14 +11,12 @@ module.exports = [
     output: [
       {
         file: "dist/index.js",
-        format: "cjs",
-        sourcemap: true
+        format: "cjs"
       },
       {
         file: "dist/index.es.js",
         format: "es",
-        exports: "named",
-        sourcemap: true
+        exports: "named"
       }
     ],
     plugins: [
@@ -52,7 +50,7 @@ module.exports = [
     input: "src/index.ts",
     output: [
       {
-        file: "dist/types.d.ts",
+        file: "dist/index.d.ts",
         format: "cjs"
       }
     ],

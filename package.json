@@ -1,6 +1,6 @@
 {
   "name": "@davidpinkevich95/date-picker",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "davidpinkevich",
   "main": "dist/index.js",
