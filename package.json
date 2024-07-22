@@ -1,9 +1,8 @@
 {
   "name": "@davidpinkevich/date-picker",
   "publishConfig": {
-    "@davidpinkevich:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/davidpinkevich"
   },
-  "repository": "https://github.com/davidpinkevich/date-picker",
   "version": "1.0.0",
   "license": "MIT",
   "author": "davidpinkevich",
