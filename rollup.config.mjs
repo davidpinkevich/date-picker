@@ -1,27 +1,31 @@
+import babel from "@rollup/plugin-babel";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
 import svg from "rollup-plugin-svg";
-import dts from "rollup-plugin-dts";
-
-const packageJson = require("./package.json");
+import { dts } from "rollup-plugin-dts";
 
 module.exports = [
   {
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.module,
+        file: "dist/index.js",
         format: "cjs",
         sourcemap: true
       },
       {
-        file: packageJson.main,
-        format: "esm",
+        file: "dist/index.es.js",
+        format: "es",
+        exports: "named",
         sourcemap: true
       }
     ],
     plugins: [
+      babel({
+        exclude: "node_modules/**",
+        presets: ["@babel/preset-react"]
+      }),
       typescript({
         tsconfig: "./tsconfig.json",
         exclude: ["**/*.stories.tsx"]
@@ -44,8 +48,21 @@ module.exports = [
     external: ["react", "react-dom", "styled-components"]
   },
   {
+    external: ["react", "react-dom", "styled-components"],
     input: "src/index.ts",
-    output: [{ file: packageJson.types, format: "esm" }],
-    plugins: [dts.default()]
+    output: [
+      {
+        file: "dist/index.d.ts",
+        format: "cjs"
+      }
+    ],
+    plugins: [
+      resolve(),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        exclude: ["**/*.stories.tsx"]
+      }),
+      dts()
+    ]
   }
 ];
