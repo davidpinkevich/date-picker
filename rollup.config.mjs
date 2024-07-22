@@ -52,7 +52,7 @@ module.exports = [
     input: "src/index.ts",
     output: [
       {
-        file: "dist/index.d.ts",
+        file: "dist/types.d.ts",
         format: "cjs"
       }
     ],

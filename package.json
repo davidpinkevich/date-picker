@@ -1,9 +1,6 @@
 {
-  "name": "@davidpinkevich/date-picker",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/davidpinkevich"
-  },
-  "version": "1.0.0",
+  "name": "@davidpinkevich95/date-picker",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "davidpinkevich",
   "main": "dist/index.js",
@@ -23,7 +20,8 @@
     "watch": "rollup -c -w",
     "prepare": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy-storybook": "yarn build-storybook && gh-pages -d storybook-static"
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^5.0.2",
