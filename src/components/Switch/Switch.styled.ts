@@ -26,6 +26,8 @@ const StyledSwitchTitle = styled.p`
 
 const StyledArrowLeft = styled.button`
   display: flex;
+  width: 26px;
+  height: 26px;
   background-color: inherit;
   justify-content: center;
   align-items: center;
@@ -40,6 +42,8 @@ const StyledArrowLeft = styled.button`
 
 const StyledArrowRight = styled.button`
   display: flex;
+  width: 26px;
+  height: 26px;
   background-color: inherit;
   justify-content: center;
   align-items: center;

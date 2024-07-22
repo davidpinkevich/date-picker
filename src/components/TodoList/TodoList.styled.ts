@@ -61,6 +61,7 @@ const StyledAddBtn = styled.button`
   font-size: ${(props) => props.theme.fontSizes.todoListBtnAdd};
   font-weight: 600;
   width: 100%;
+  height: 38px;
   padding: 10px 15px;
   transition: all 0.2s;
 
