@@ -3,3 +3,4 @@ dist
 .npmrc
 storybook-static
 *storybook.log
+coverage
