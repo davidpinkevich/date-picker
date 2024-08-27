@@ -3,8 +3,8 @@ import styled, { css, keyframes } from "styled-components";
 import { COLORS_HOLIDAY } from "constants/data";
 
 const opacityChange = keyframes`
-  0% { opacity: 0.2; } 
-  100% { opacity: 1; }  
+  0% { opacity: 0.2; }
+  100% { opacity: 1; }
 `;
 
 const StyledMainBlock = styled.div<{ $move: boolean }>`
@@ -62,21 +62,26 @@ const StyledDateBlockItem = styled.div<{
       return "inherit";
     }
   }};
-  color: ${(props) => {
-    if (props.$today) {
-      return props.theme.colors.white;
-    } else if (props.$targetRange?.start || props.$targetRange?.end) {
-      return props.theme.colors.white;
-    } else if (props.$isWeekend) {
-      return props.theme.colors.mainRed;
-    } else if (typeof props.$isHoliday === "string") {
-      return COLORS_HOLIDAY[props.$isHoliday];
-    } else if (props.$targetRange?.middle) {
+  color: ${({
+    theme,
+    $today,
+    $targetRange,
+    $isWeekend,
+    $isHoliday,
+    $currentMonth
+  }) => {
+    if ($today || $targetRange?.start || $targetRange?.end) {
+      return theme.colors.white;
+    } else if ($isWeekend) {
+      return theme.colors.mainRed;
+    } else if (typeof $isHoliday === "string") {
+      return COLORS_HOLIDAY[$isHoliday];
+    } else if ($targetRange?.middle) {
       return "#2F80ED";
-    } else if (props.$currentMonth) {
-      return props.theme.colors.mainDark;
+    } else if ($currentMonth) {
+      return theme.colors.mainDark;
     } else {
-      return props.theme.colors.mainGray;
+      return theme.colors.mainGray;
     }
   }};
 

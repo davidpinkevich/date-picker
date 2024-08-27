@@ -7,7 +7,7 @@ const StyledTodoHeader = styled.header`
   gap: 8px;
 `;
 
-const StyledTodoHeaderTitile = styled.h2`
+const StyledTodoHeaderTitle = styled.h2`
   font-size: ${(props) => props.theme.fontSizes.todoListTitle};
   font-weight: 600;
   text-align: center;
@@ -17,4 +17,4 @@ const StyledTodoHeaderText = styled.p`
   font-weight: 600;
 `;
 
-export { StyledTodoHeader, StyledTodoHeaderText, StyledTodoHeaderTitile };
+export { StyledTodoHeader, StyledTodoHeaderText, StyledTodoHeaderTitle };

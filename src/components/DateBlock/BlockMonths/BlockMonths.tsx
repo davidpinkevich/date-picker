@@ -30,16 +30,14 @@ const BlockMonths: React.FC<PropsBlockMonths> = ({
 
   return (
     <StyledBlockWeeks>
-      {MONTHS.map((item) => {
-        return (
-          <StyledBlockWeeksItem
-            onClick={() => handleSwitch(item.id)}
-            $target={targetDate.month === item.id}
-            key={item.id}>
-            {item.name}
-          </StyledBlockWeeksItem>
-        );
-      })}
+      {MONTHS.map((item) => (
+        <StyledBlockWeeksItem
+          onClick={() => handleSwitch(item.id)}
+          $target={targetDate.month === item.id}
+          key={item.id}>
+          {item.name}
+        </StyledBlockWeeksItem>
+      ))}
     </StyledBlockWeeks>
   );
 };

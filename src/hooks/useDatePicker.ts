@@ -26,7 +26,7 @@ const useDatePicker = () => {
     if (targetDay?.day && targetDay?.month && targetDay?.year) {
       setValue(parserDateToStr({ ...targetDay }));
     }
-  }, [targetDay?.day, targetDay?.month, targetDay?.year]);
+  }, [targetDay]);
 
   useEffect(() => {
     if (value.length === INPUT_VALUES.length) {

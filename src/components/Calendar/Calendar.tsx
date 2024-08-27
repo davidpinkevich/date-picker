@@ -9,8 +9,6 @@ import { StyledCalendar } from "./Calendar.styled";
 import { type PropsCalendar } from "./Calendar.types";
 
 const Calendar: React.FC<PropsCalendar> = ({
-  typeStart = "Mo",
-  withHolidays = true,
   range,
   ButtonClear,
   targetDay,
@@ -19,6 +17,8 @@ const Calendar: React.FC<PropsCalendar> = ({
   handleMouseRange,
   setViewTodo,
   todos,
+  typeStart = "Mo",
+  withHolidays = true,
   colorHoliday = "red",
   min = BASE_PERIOD.MIN,
   max = BASE_PERIOD.MAX

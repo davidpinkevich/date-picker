@@ -126,7 +126,7 @@ const Switch: React.FC<PropsSwitch> = ({
               targetDate.month,
               targetDate.year
             )
-          }); //
+          });
       }
     } else if (
       typeSwitch === TypesSwitch.months &&
