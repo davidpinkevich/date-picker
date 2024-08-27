@@ -1,4 +1,5 @@
 import { addTargetRange } from "utils/viewRangePicker";
+
 import { rangeMock } from "mocks/data";
 
 describe("add target range", () => {

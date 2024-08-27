@@ -9,7 +9,7 @@ export interface PropsBlockWeeks {
   range?: TypeYear[] | null;
   todos?: Record<string, TypeTodo[]>;
   setViewTodo?: (value: boolean) => void;
-  handleClickRange?: (year: number, month: number, day: number) => void;
+  handleClickRange?: (value: TypeYear) => void;
   setTargetDay?: (value: TypeTargetDay) => void;
   handleMouseRange?: (
     year: number,

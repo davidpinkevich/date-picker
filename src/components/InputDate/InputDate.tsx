@@ -2,8 +2,13 @@ import React from "react";
 
 import { createMask } from "utils/createMask";
 import { CalendarImg } from "assets/icons/calendar";
+import { CrossImg } from "assets/icons/cross";
 
-import { StyledInput, StyledInputWrapper } from "./InputDate.styled";
+import {
+  StyledClearBtn,
+  StyledInput,
+  StyledInputWrapper
+} from "./InputDate.styled";
 import { type PropsInputDate } from "./InputDate.types";
 
 const InputDate: React.FC<PropsInputDate> = ({
@@ -26,6 +31,11 @@ const InputDate: React.FC<PropsInputDate> = ({
     setValue(result);
   };
 
+  const handleInputClear = () => {
+    setValue("");
+    setTargetDay(null);
+  };
+
   return (
     <StyledInputWrapper>
       <CalendarImg />
@@ -37,6 +47,9 @@ const InputDate: React.FC<PropsInputDate> = ({
         type="text"
         placeholder={placeholder}
       />
+      <StyledClearBtn onClick={handleInputClear}>
+        <CrossImg />
+      </StyledClearBtn>
     </StyledInputWrapper>
   );
 };

@@ -11,6 +11,8 @@ import {
 } from "./BlockWeeks.styled";
 import { type PropsBlockWeeks } from "./BlockWeeks.types";
 
+import { type TypeYear } from "types/contextTypes";
+
 const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
   ({
     move,
@@ -44,9 +46,9 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
       }
     };
 
-    const handleClick = (year: number, month: number, day: number) => {
+    const handleClick = ({ year, month, day }: TypeYear) => {
       if (range) {
-        handleClickRange(year, month, day);
+        handleClickRange({ year, month, day });
       } else {
         setTargetDay({
           year,
@@ -86,7 +88,9 @@ const BlockWeeks: React.FC<PropsBlockWeeks> = memo(
                         $isHoliday={holiday?.isHoliday ? colorHoliday : false}
                         $isWeekend={isWeekend}
                         key={index}
-                        onClick={() => handleClick(year, month, dayNumber)}
+                        onClick={() =>
+                          handleClick({ year, month, day: dayNumber })
+                        }
                         onDoubleClick={handleDoubleClick}
                         onMouseOver={() =>
                           handleMouseOver(

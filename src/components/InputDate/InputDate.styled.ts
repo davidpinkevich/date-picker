@@ -28,11 +28,12 @@ const StyledInput = styled.input<{
       return `inset 0px 0px 2px 2px ${props.theme.colors.lightRed}`;
     }
   }};
+  position: relative;
   transition: all 0.2s;
   width: 100%;
   height: 100%;
   border-radius: 8px;
-  padding: 11px 39px;
+  padding: 11px 20px;
   color: ${(props) => {
     if (props.$targetDay === null || props.$targetDay.valid) {
       return props.theme.colors.mainDark;
@@ -43,4 +44,26 @@ const StyledInput = styled.input<{
   font-size: ${(props) => props.theme.fontSizes.inputSize};
 `;
 
-export { StyledInput, StyledInputWrapper };
+const StyledClearBtn = styled.button`
+  position: absolute;
+
+  top: 12.5px;
+  right: 25px;
+  background-color: inherit;
+  width: 15px;
+  height: 15px;
+
+  & svg {
+    transition: all 0.2s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+`;
+
+export { StyledClearBtn, StyledInput, StyledInputWrapper };

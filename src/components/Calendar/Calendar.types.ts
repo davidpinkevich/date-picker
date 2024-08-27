@@ -12,7 +12,7 @@ export interface PropsCalendar {
   colorHoliday?: "red" | "lightRed" | "apple";
   todos?: Record<string, TypeTodo[]>;
   setViewTodo?: (value: boolean) => void;
-  handleClickRange?: (year: number, month: number, day: number) => void;
+  handleClickRange?: (value: TypeYear) => void;
   setTargetDay?: (value: TypeTargetDay) => void;
   handleMouseRange?: (
     year: number,

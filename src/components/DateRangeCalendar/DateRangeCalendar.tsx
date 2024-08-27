@@ -9,6 +9,8 @@ import { ThemeContainer } from "components/ThemeContainer/ThemeContainer";
 import { StyledWrapperDateRange } from "./DateRangeCalendar.styled";
 import { type PropsDateRangeCalendar } from "./DateRangeCalendar.types";
 
+import { type TypeYear } from "types/contextTypes";
+
 const DateRangeCalendar: React.FC<PropsDateRangeCalendar> = (props) => {
   const [countClick, setCountClick] = useState(0);
 
@@ -16,7 +18,7 @@ const DateRangeCalendar: React.FC<PropsDateRangeCalendar> = (props) => {
     Array<{ year: number; month: number; day: number }>
   >([]);
 
-  const handleClickRange = (year: number, month: number, day: number) => {
+  const handleClickRange = ({ year, month, day }: TypeYear) => {
     if (countClick === 0) {
       const arr = [{ year, month, day }];
       setRange(arr);
