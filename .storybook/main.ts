@@ -15,7 +15,8 @@ const config: StorybookConfig = {
         constants: path.resolve(__dirname, "../src/constants"),
         hooks: path.resolve(__dirname, "../src/hooks"),
         utils: path.resolve(__dirname, "../src/utils"),
-        styles: path.resolve(__dirname, "../src/styles")
+        styles: path.resolve(__dirname, "../src/styles"),
+        types: path.resolve(__dirname, "../src/types")
       }
     };
 
@@ -28,7 +29,6 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions"
-    // "@storybook/preset-scss"
   ],
   framework: {
     name: "@storybook/react-webpack5",

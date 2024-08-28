@@ -1,139 +1,72 @@
-# Tестовое задание библиотека Modsen DatePicker
+# React Date Picker
 
+This simple little **React** library provides the ability to use two components of your choice with a few optional properties.
 
-## Содержание
+## Installation
 
+Your project must include **React**, **React-DOM** and **styled-components** already installed.
 
-- [Техническое задание](#Техническое-задание)
-- [Используемые технологии](#Используемые-технологии)
-- [Структура проекта](#Структура-проекта)
-- [Тестирование](#Тестирование)
-- [Как начать](#Как-начать)
-- [Полезные ссылки](#Полезные-ссылки)
+The package can be installed via **nmp**:
 
+```js
+npm install @davidpinkevich95/date-picker
+```
 
-## Техническое задание
-Необходимо реализовать библиотеку Javascript - ***DatePicker***, для работы с различными видами календаря.
-Цель состоит в том, чтобы создать базовую библиотеку, которую можно настраивать и расширять.
+Or via **yarn**:
 
+```js
+yarn add @davidpinkevich95/date-picker
+```
 
-#### Необходимый функционал:
+## Usage
 
+You can import one of the two components provided and use them anywhere in your project.
 
-- Просмотр календаря;
-- Выбор диапазона для календаря;
-- Дефолтный календарь с заранее установленным диапазоном;
-- Возможность выбора начала недели(с понедельника или воскресенья);
-- Выбор вида календаря (по неделям, месяцам и т.д.);
-- Реализовать возможность при клике на определенный день добавлять список задач и
-сохранять их в localStorage;
-- Возможность переключения на предыдущий(ую)/следующий(ую) неделю/месяц/год;
-- Возможность выбора максимальной даты календаря;
-- Возможность выбора минимальной даты для календаря;
-- Возможность скрывать/показывать выходные дни и выделять праздничные дни другим цветом;
-- Возможность перейти в календаре на введенную пользователем дату;
-- Стилизация календаря.
+```js
+import { DatePicker, DateRangeCalendar } from "@davidpinkevich95/date-picker";
 
+function App() {
+  return (
+    <div className="App">
+      <DatePicker />
+    </div>
+  );
+}
 
-#### Дополнительный функционал:
+export default App;
+```
 
+**DatePicker** is a component with the ability to add a task list for any day.
+**DateRangeCalendar** is a component with the ability to select a date range
 
-- Развернуть приложение на хостинге (heroku, vercel);
-- Настроить CI/CD, используя [GitHub Actions](https://github.com/features/actions);
-- Собрать проект с нуля(с настройками всех конфигов: rollup, eslint, prettier, husky).
+## Configuration
 
+You can use components without specifying additional parameters or pass one of these props to any of the components.
 
-#### Пример графического представления:
+```js
+import { DatePicker } from "@davidpinkevich95/date-picker";
 
+function App() {
+  return (
+    <div className="App">
+      <DatePicker
+        min={2020}
+        max={2030}
+        typeStart="Mo"
+        colorHoliday="apple"
+        withHolidays
+      />
+    </div>
+  );
+}
 
-Ссылка на макет: [Макет "DatePicker"](https://www.figma.com/file/PGg4P38QaPjUzasxC2GSkv/Modsen-Datepicker?node-id=0%3A1&t=dWZj8oM41qBje0bv-0).
+export default App;
+```
 
+Types of configurable parameters:
 
-#### Также проект предполагает:
-
-- Придерживаться требований по написанию и организации кода react приложения. Ссылка на требования: [Требования к тестовому заданию](https://github.com/annaprystavka/requirements);
-
-- Разделить библиотеку на два основных компонента: представления и логики. Для реализации логики приложения необходимо использовать порождающий паттерн программирования ***"Декоратор"***, который позволяет динамически добавлять объектам новую функциональность, оборачивая их в полезные «обёртки» (см. подробнее [паттерн Декоратор](https://refactoring.guru/ru/design-patterns/decorator)). При помощи паттерна создать сервисный класс, в котором вы будете задавать конфигурацию и создавать календарь;
-
-
-- Настроить конфигурации ***babel***, ***eslint***, ***prettier***;
-
-- Подключить и настроить бандлер ***Rollup*** для сборки проекта в библиотеку;
-
-- Подключить и настроить ***Storybook*** для проверки работоспособности вашей библиотеки;
-
-- Добавить обработку ошибок через паттерн ***Error Boundaries***;
-
-- Добавить проверку типов в React компонентах, передаваемых параметров и подобных объектов;
-
-- Использовать алиасы для импортирования файлов;
-
-- В приложении допускается использование языка typescript;
-
-- Нельзя использовать какие-либо сторонние библиотеки.
-
-
-## Используемые технологии
-
-
-### Для react
-- ***node.js*** - программная платформа, основанная на движке V8 (транслирующем JavaScript в машинный код);
-- ***babel*** - транспайлер, преобразующий код из одного стандарта в другой;
-- ***eslint*** - линтер для JavaScript кода;
-- ***yarn*** - менеджер пакетов;
-- ***rollup*** - сборщик ES-модулей;
-- ***storybook*** - инструмент, используемый для разработки компонентов пользовательского интерфейса в изоляции;
-- ***react*** - JavaScript-библиотека для создания пользовательских интерфейсов;
-- ***prop-types*** - набор валидаторов, которые могут быть использованы для проверки получаемых данных;
-- ***styled-components*** - система стилизации react компонентов;
-- ***jest*** — интеграционное тестирование (rtl) + unit-тестирование.
-
-
- ### Для react native
-Will be soon...
-
-
-## Структура проекта
-
-
-[Структура проекта](https://github.com/mkrivel/structure)
-
-
-## Тестирование
-
-
-Реализовать e2e тестирование c полным покрытием функционала приложения:
-- Сервис для конфигурации DatePicker-компонента;
-- Графическое (компонент модуля и т.д.).
-
-
-
-
-## Полезные ссылки
-
-
-[React](https://reactjs.org/docs/getting-started.html)
-
-
-[Rollup](https://rollupjs.org/guide/en/)
-
-
-[Storybook](https://storybook.js.org/docs/basics/introduction/)
-
-
-[Eslint](https://eslint.org/docs/user-guide/configuring)
-
-
-[Babel](https://babeljs.io/docs/en/configuration)
-
-
-[Тестирование Jest](https://jestjs.io/ru/docs/getting-started)
-
-
-[Styled-components](https://www.styled-components.com/docs)
-
-
-[Husky](https://dev.to/ivadyhabimana/setup-eslint-prettier-and-husky-in-a-node-project-a-step-by-step-guide-946)
-
-
-
+- **min** (number) - calendar start year
+- **max** (number) - year of the end of the calendar
+- **typeStart** ("Mo" | "Su") - week display from Monday or Sunday
+- **withHolidays** (boolean) - whether to display holidays
+- **colorHoliday** ("red" | "lightRed" | "apple") - holiday color

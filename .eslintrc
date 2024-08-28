@@ -54,24 +54,15 @@
       "error",
       {
         "groups": [
+          ["^react", "^@testing-library", "^styled-components"],
           [
-            "^react",
-            "^react-redux",
-            "^@reduxjs/toolkit",
-            "^@testing-library",
-            "classnames"
+            "^constants(/.*|$)",
+            "^utils(/.*|$)",
+            "^hooks(/.*|$)",
+            "^assets(/.*|$)",
+            "^styles(/.*|$)"
           ],
-          [
-            "^@constants(/.*|$)",
-            "^@utils(/.*|$)",
-            "^@hooks(/.*|$)",
-            "^@assets(/.*|$)",
-            "^@redux(/.*|$)",
-            "^@styles(/.*|$)",
-            "^@mocks(/.*|$)",
-            "^@src/types(/.*|$)"
-          ],
-          ["^@pages(/.*|$)", "^@components(/.*|$)"],
+          ["^components(/.*|$)"],
           ["^\\u0000"],
           ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
           ["^\\./(?=.)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
